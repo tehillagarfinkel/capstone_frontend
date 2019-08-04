@@ -21,6 +21,7 @@
           <input v-model="category.image" type="text" />
           <button v-on:click="updateCategory(category)">Update</button>
         </div>
+        <button v-on:click="destroyCategory(category)">Delete</button>
       </div>
     </div>
   </div>
@@ -75,6 +76,12 @@ export default {
       axios.patch("/api/categories/" + category.id, params).then(response => {
         console.log(response.data);
         this.currentCategory = {};
+      });
+    },
+    destroyCategory: function(category) {
+      axios.delete("/api/categories/" + category.id).then(response => {
+        var index = this.categories.indexOf(category);
+        this.categories.splice(index, 1);
       });
     }
   }
