@@ -11,6 +11,10 @@
     <div v-for="category in categories">
       <img v-bind:src="category.image" alt="category.name" />
       <h2>{{ category.name }}</h2>
+      <button v-on:click="showCategoryTasks(category)">Show Tasks</button>
+      <div v-if="currentCategory === category">
+        <p>{{ category.tasks }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +29,7 @@ export default {
     return {
       message: "Welcome to Vue.js!",
       categories: [],
+      currentCategory: {},
       categoryName: "",
       categoryImage: ""
     };
@@ -47,6 +52,13 @@ export default {
         this.categoryName = "";
         this.categoryImage = "";
       });
+    },
+    showCategoryTasks: function(category) {
+      if (this.currentCategory === category) {
+        this.currentCategory = {};
+      } else {
+        this.currentCategory = category;
+      }
     }
   }
 };
