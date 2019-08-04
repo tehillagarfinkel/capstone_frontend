@@ -14,6 +14,13 @@
       <button v-on:click="showCategoryTasks(category)">Show Tasks</button>
       <div v-if="currentCategory === category">
         <p>{{ category.tasks }}</p>
+        <div>
+          Name:
+          <input v-model="category.name" type="text" />
+          Image:
+          <input v-model="category.image" type="text" />
+          <button v-on:click="updateCategory(category)">Update</button>
+        </div>
       </div>
     </div>
   </div>
@@ -59,6 +66,16 @@ export default {
       } else {
         this.currentCategory = category;
       }
+    },
+    updateCategory: function(category) {
+      var params = {
+        name: category.name,
+        image: category.image
+      };
+      axios.patch("/api/categories/" + category.id, params).then(response => {
+        console.log(response.data);
+        this.currentCategory = {};
+      });
     }
   }
 };
