@@ -13,7 +13,9 @@
       <h2>{{ category.name }}</h2>
       <button v-on:click="showCategoryTasks(category)">Show Tasks</button>
       <div v-if="currentCategory === category">
-        <p>{{ category.tasks }}</p>
+        <div v-for="task in category.tasks">
+          {{ task.description }}
+        </div>
         <div>
           Name:
           <input v-model="category.name" type="text" />
