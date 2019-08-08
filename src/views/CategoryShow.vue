@@ -2,7 +2,7 @@
   <div class="home">
     <h1>{{ category.name }}</h1>
     <img v-bind:src="category.image" alt="" />
-    <div v-for="task in categoryTasks">
+    <div v-for="task in tasks">
       <h2>{{ task.description }}</h2>
     </div>
     <div>
@@ -33,7 +33,7 @@ export default {
     return {
       message: "Welcome to Vue.js!",
       category: [],
-      categoryTasks: [],
+      tasks: [],
       name: "",
       image: "",
       taskDescription: ""
@@ -43,7 +43,7 @@ export default {
     axios.get("/api/categories/" + this.$route.params.id).then(response => {
       console.log(response.data);
       this.category = response.data;
-      this.categoryTasks = response.data.tasks;
+      this.tasks = response.data.tasks;
     });
   },
   methods: {
@@ -74,7 +74,7 @@ export default {
       };
       axios.post("/api/tasks", params).then(response => {
         console.log(response.data);
-        this.categoryTasks.push(response.data);
+        this.tasks.push(response.data);
       });
     }
   }
