@@ -11,7 +11,7 @@
       Image:
       <input v-model="category.image" type="text" />
       <button v-on:click="updateCategory(category)">Update Category</button>
-      <button v-on:click="deleteCategory(category)">Delete Category</button>
+      <button v-on:click="destroyCategory(category)">Delete Category</button>
     </div>
     <router-link to="/">Back to my categories</router-link>
   </div>
@@ -54,6 +54,11 @@ export default {
         .catch(error => {
           this.errors = error.response.data.errors;
         });
+    },
+    destroyCategory: function(category) {
+      axios.delete("api/categories/" + this.$route.params.id).then(response => {
+        this.$router.push("/");
+      });
     }
   }
 };

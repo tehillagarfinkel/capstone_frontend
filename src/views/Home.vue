@@ -11,7 +11,7 @@
     <div v-for="category in categories">
       <img v-bind:src="category.image" alt="category.name" />
       <h2>{{ category.name }}</h2>
-      <router-link v-bind:to="`/category/${category.id}`">Show Tasks</router-link>
+      <router-link v-bind:to="`/category/${category.id}`">View {{ category.name }}</router-link>
     </div>
   </div>
 </template>
