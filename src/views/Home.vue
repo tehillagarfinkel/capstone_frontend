@@ -11,11 +11,9 @@
     <div v-for="category in categories">
       <img v-bind:src="category.image" alt="category.name" />
       <h2>{{ category.name }}</h2>
-      <button v-on:click="showCategoryTasks(category)">Show Tasks</button>
+      <router-link v-bind:to="`/category/${category.id}`">Show Tasks</router-link>
+      <!-- <button v-on:click="showCategoryTasks(category)">Show Tasks</button>
       <div v-if="currentCategory === category">
-        <div v-for="task in category.tasks">
-          {{ task.description }}
-        </div>
         <div>
           Name:
           <input v-model="category.name" type="text" />
@@ -24,7 +22,7 @@
           <button v-on:click="updateCategory(category)">Update</button>
         </div>
         <button v-on:click="destroyCategory(category)">Delete</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -63,13 +61,13 @@ export default {
         this.categoryImage = "";
       });
     },
-    showCategoryTasks: function(category) {
-      if (this.currentCategory === category) {
-        this.currentCategory = {};
-      } else {
-        this.currentCategory = category;
-      }
-    },
+    // showCategoryTasks: function(category) {
+    //   if (this.currentCategory === category) {
+    //     this.currentCategory = {};
+    //   } else {
+    //     this.currentCategory = category;
+    //   }
+    // },
     updateCategory: function(category) {
       var params = {
         name: category.name,
