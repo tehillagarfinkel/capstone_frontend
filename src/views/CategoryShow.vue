@@ -75,6 +75,7 @@ export default {
       axios.post("/api/tasks", params).then(response => {
         console.log(response.data);
         this.tasks.push(response.data);
+        this.taskDescription = "";
       });
     }
   }
