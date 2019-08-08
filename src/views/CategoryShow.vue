@@ -6,6 +6,12 @@
       <h2>{{ task.description }}</h2>
     </div>
     <div>
+      <h2>New Task</h2>
+      Description:
+      <input v-model="taskDescription" type="text" />
+      <button v-on:click="createTask">Create Task</button>
+    </div>
+    <div>
       Name:
       <input v-model="category.name" type="text" />
       Image:
@@ -29,7 +35,8 @@ export default {
       category: [],
       categoryTasks: [],
       name: "",
-      image: ""
+      image: "",
+      taskDescription: ""
     };
   },
   created: function() {
@@ -58,6 +65,16 @@ export default {
     destroyCategory: function(category) {
       axios.delete("api/categories/" + this.$route.params.id).then(response => {
         this.$router.push("/");
+      });
+    },
+    createTask: function() {
+      var params = {
+        category_id: this.category.id,
+        description: this.taskDescription
+      };
+      axios.post("/api/tasks", params).then(response => {
+        console.log(response.data);
+        this.categoryTasks.push(response.data);
       });
     }
   }
