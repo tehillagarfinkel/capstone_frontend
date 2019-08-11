@@ -6,6 +6,20 @@
     <p>Start Time: {{ task.start_time }}</p>
     <p>Due Date: {{ task.due_date }}</p>
     <p>Completed: {{ task.completed }}</p>
+    <div>
+      Description:
+      <input v-model="description" type="text" />
+      Duration:
+      <input v-model="duration" type="text" />
+      Start Time:
+      <input v-model="startTime" type="text" />
+      Due Date:
+      <input v-model="dueDate" type="text" />
+      Completed:
+      <input v-model="completed" type="text" />
+
+      <button v-on:click="updateTask(task)">Update task information</button>
+    </div>
     <router-link v-bind:to="`/category/${task.category_id}`">Back to all tasks</router-link>
   </div>
 </template>
@@ -18,7 +32,12 @@ export default {
   data: function() {
     return {
       message: "Welcome to Vue.js!",
-      task: {}
+      task: {},
+      description: "",
+      duration: "",
+      startTime: "",
+      dueDate: "",
+      completed: ""
     };
   },
   created: function() {
@@ -26,6 +45,29 @@ export default {
       this.task = response.data;
     });
   },
-  methods: {}
+  methods: {
+    updateTask: function(task) {
+      var params = {
+        description: this.description,
+        duration: this.duration,
+        start_time: this.startTime,
+        due_date: this.dueDate,
+        completed: this.completed
+      };
+      axios
+        .patch("/api/tasks/" + this.$route.params.id, params)
+        .then(response => {
+          console.log(response.data);
+          this.task = response.data;
+          this.duration = "";
+          this.startTime = "";
+          this.dueDate = "";
+          this.completed = "";
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
+    }
+  }
 };
 </script>
