@@ -4,6 +4,7 @@
     <img v-bind:src="category.image" alt="" />
     <div v-for="task in tasks">
       <h2>{{ task.description }}</h2>
+      <router-link v-bind:to="`/tasks/${task.id}`">More details</router-link>
     </div>
     <div>
       <h2>New Task</h2>
