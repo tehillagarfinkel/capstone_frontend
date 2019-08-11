@@ -31,7 +31,7 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
+      message: "My Task:",
       task: {},
       description: "",
       duration: "",
@@ -54,11 +54,13 @@ export default {
         due_date: this.dueDate,
         completed: this.completed
       };
+      Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
       axios
         .patch("/api/tasks/" + this.$route.params.id, params)
         .then(response => {
           console.log(response.data);
           this.task = response.data;
+          this.description = "";
           this.duration = "";
           this.startTime = "";
           this.dueDate = "";
