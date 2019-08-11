@@ -19,6 +19,7 @@
       <input v-model="completed" type="text" />
 
       <button v-on:click="updateTask(task)">Update task information</button>
+      <button v-on:click="destroyTask(task)">Delete Task</button>
     </div>
     <router-link v-bind:to="`/category/${task.category_id}`">Back to all tasks</router-link>
   </div>
@@ -69,6 +70,11 @@ export default {
         .catch(error => {
           this.errors = error.response.data.errors;
         });
+    },
+    destroyTask: function(task) {
+      axios.delete("/api/tasks/" + this.$route.params.id).then(response => {
+        this.$router.push(`/category/${task.category_id}`);
+      });
     }
   }
 };
