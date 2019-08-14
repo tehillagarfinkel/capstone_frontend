@@ -15,11 +15,15 @@
       <input v-model="startTime" type="text" />
       Due Date:
       <input v-model="dueDate" type="text" />
-      Completed:
-      <input v-model="completed" type="text" />
 
       <button v-on:click="updateTask(task)">Update task information</button>
-      <button v-on:click="destroyTask(task)">Delete Task</button>
+      <div>
+        <button v-on:click="destroyTask(task)">Delete Task</button>
+      </div>
+      <div>
+        Task Completed
+        <input v-on:click="markComplete(task)" type="checkbox" />
+      </div>
     </div>
     <router-link v-bind:to="`/category/${task.category_id}`">Back to all tasks</router-link>
   </div>
@@ -52,8 +56,7 @@ export default {
         description: this.description,
         duration: this.duration,
         start_time: this.startTime,
-        due_date: this.dueDate,
-        completed: this.completed
+        due_date: this.dueDate
       };
       Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
       axios
@@ -65,7 +68,6 @@ export default {
           this.duration = "";
           this.startTime = "";
           this.dueDate = "";
-          this.completed = "";
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -75,6 +77,28 @@ export default {
       axios.delete("/api/tasks/" + this.$route.params.id).then(response => {
         this.$router.push(`/category/${task.category_id}`);
       });
+    },
+    markComplete: function(task) {
+      if (this.completed === "true") {
+        this.completed = "false";
+      } else {
+        this.completed = "true";
+      }
+
+      var params = {
+        completed: this.completed
+      };
+      Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
+      axios
+        .patch("/api/tasks/" + this.$route.params.id, params)
+        .then(response => {
+          console.log(response.data);
+          this.task = response.data;
+          this.completed = "";
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
     }
   }
 };

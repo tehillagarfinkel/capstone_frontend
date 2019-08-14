@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ category.name }}</h1>
-    <img v-bind:src="category.image" alt="" />
+    <img v-bind:src="category.image" alt="category.name" />
     <div v-for="task in tasks">
       <h2>{{ task.description }}</h2>
       <router-link v-bind:to="`/tasks/${task.id}`">More details</router-link>
