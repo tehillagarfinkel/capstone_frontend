@@ -1,11 +1,5 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-    <h1>{{ task.description }}</h1>
-    <p>Duration: {{ task.duration }}</p>
-    <p>Start Time: {{ task.start_time }}</p>
-    <p>Due Date: {{ task.due_date }}</p>
-    <p>Completed: {{ task.completed }}</p>
     <div>
       Description:
       <input v-model="description" type="text" />
@@ -26,6 +20,52 @@
       </div>
     </div>
     <router-link v-bind:to="`/category/${task.category_id}`">Back to all tasks</router-link>
+
+    <section class="py-7 py-md-10">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-xs-12">
+            <div class="image mb-5 mb-md-0">
+              <img class="w-100 rounded" src="assets/img/features/features-team-1.jpg" alt="team-1.jpg" />
+            </div>
+          </div>
+
+          <div class="col-sm-8 col-xs-12">
+            <h2 class="text-danger font-weight-bold text-capitalize pl-0 mb-5">My Task</h2>
+
+            <h2 class="text-danger font-weight-medium mb-3 ">{{ task.description }}</h2>
+
+            <div class="text-white rounded bg-warning text-uppercase font-weight-medium px-6 py-3 mb-3">
+              Duration:
+            </div>
+
+            <div class="text-muted text-capitalize font-weight-medium ml-4 mb-5 font-size-20">
+              {{ task.duration }} minutes
+            </div>
+
+            <div class="text-white rounded bg-success text-uppercase font-weight-medium px-6 py-3 mb-3">
+              Start Time:
+            </div>
+
+            <div class="text-muted text-capitalize font-weight-medium ml-4 mb-5 font-size-20">
+              {{ task.start_time }}
+            </div>
+
+            <div class="text-white rounded bg-danger text-uppercase font-weight-medium px-6 py-3 mb-3">Due Date:</div>
+
+            <div class="text-muted text-capitalize font-weight-medium ml-4 mb-5 font-size-20">
+              {{ task.due_date }}
+            </div>
+
+            <div class="text-white rounded bg-danger text-uppercase font-weight-medium px-6 py-3 mb-3">Completed:</div>
+
+            <div class="text-muted text-capitalize font-weight-medium ml-4 mb-5 font-size-20">
+              {{ task.completed }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 

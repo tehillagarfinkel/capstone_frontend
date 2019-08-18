@@ -41,13 +41,6 @@
                   <div class="btn btn-primary bg-color-1">
                     <router-link v-bind:to="`/tasks/${task.id}`">More info</router-link>
                   </div>
-                  <!-- <router-link v-bind:to="`/tasks/${task.id}`">More details</router-link> -->
-                  <!--   <a v-bind:to="`/tasks/${task.id}`" class="btn btn-primary bg-color-1">More Info</a> -->
-                  <!-- <h4 class="color-1">
-                    $69
-                    <br />
-                    <small>Per Month</small>
-                  </h4> -->
                 </div>
               </div>
             </div>
@@ -55,7 +48,7 @@
           <!--  <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="pricingTable">
               <div class="priceUper">
-                <div class="priceTitle bg-color-2"><h3>Evening Session</h3></div>
+                <div class="priceTitle bg-color-2"><h3>New Task</h3></div>
                 <div class="priceInfo bg-color-2">
                   <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots.</p>
                 </div>
@@ -89,8 +82,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-xs-12">
+          </div> -->
+          <!--  <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="pricingTable">
               <div class="priceUper">
                 <div class="priceTitle bg-color-3"><h3>Fullday Session</h3></div>
