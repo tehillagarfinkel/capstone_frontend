@@ -1,18 +1,98 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-    <h1>New Category</h1>
-    Name:
-    <input v-model="categoryName" type="text" />
-    Image:
-    <input v-model="categoryImage" type="text" />
-    <button v-on:click="createCategory()">Create Category</button>
     <h1>All Categories</h1>
     <div v-for="category in categories">
       <img v-bind:src="category.image" alt="category.name" />
       <h2>{{ category.name }}</h2>
       <router-link v-bind:to="`/category/${category.id}`">View {{ category.name }}</router-link>
     </div>
+    <h1>New Category</h1>
+    Name:
+    <input v-model="categoryName" type="text" />
+    Image:
+    <input v-model="categoryImage" type="text" />
+    <button v-on:click="createCategory()">Create Category</button>
+
+    <section class="mainContent full-width clearfix featureSection">
+      <div class="container">
+        <div class="sectionTitle text-center">
+          <h2>
+            <span class="shape shape-left bg-color-4"></span>
+            <span>Our Features</span>
+            <span class="shape shape-right bg-color-4"></span>
+          </h2>
+        </div>
+
+        <div class="row">
+          <div vclass="col-sm-4 col-xs-12">
+            <div class="media featuresContent">
+              <span class="media-left bg-color-1">
+                <i class="fa fa-graduation-cap bg-color-1" aria-hidden="true"></i>
+              </span>
+              <div class="media-body">
+                <h3 class="media-heading color-1">Experience Teachers</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+          </div>
+          <!--   <div class="col-sm-4 col-xs-12">
+            <div class="media featuresContent">
+              <span class="media-left bg-color-2">
+                <i class="fa fa-leaf bg-color-2" aria-hidden="true"></i>
+              </span>
+              <div class="media-body">
+                <h3 class="media-heading color-2">Physical Activity</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="media featuresContent">
+              <span class="media-left bg-color-3">
+                <i class="fa fa-car bg-color-3" aria-hidden="true"></i>
+              </span>
+              <div class="media-body">
+                <h3 class="media-heading color-3">Physical Activity</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="media featuresContent">
+              <span class="media-left bg-color-4">
+                <i class="fa fa-cutlery bg-color-4" aria-hidden="true"></i>
+              </span>
+              <div class="media-body">
+                <h3 class="media-heading color-4">Delicious Food</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="media featuresContent">
+              <span class="media-left bg-color-5">
+                <i class="fa fa-heart bg-color-5" aria-hidden="true"></i>
+              </span>
+              <div class="media-body">
+                <h3 class="media-heading color-5">Love &amp; Care</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="media featuresContent">
+              <span class="media-left bg-color-6">
+                <i class="fa fa-shield bg-color-6" aria-hidden="true"></i>
+              </span>
+              <div class="media-body">
+                <h3 class="media-heading color-6">Meny Sports</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -24,7 +104,6 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
       categories: [],
       currentCategory: {},
       categoryName: "",

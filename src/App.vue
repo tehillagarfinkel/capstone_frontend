@@ -35,7 +35,7 @@
                 </li>
                 <li>
                   <i class="fa fa-clock-o bg-color-6" aria-hidden="true"></i>
-                  Open: 9am - 6pm
+                  Open: 9am - 6am
                 </li>
               </ul>
             </div>
@@ -161,7 +161,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><img src="img/logo-school.png" alt="ON IT!" /></a>
+            <a class="navbar-brand" href="index.html"><img src="" alt="ON IT!" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -188,7 +188,7 @@
               </li>
               <li class="dropdown singleDrop color-3 ">
                 <a
-                  href="javascript:void(0)"
+                  href="/"
                   class="dropdown-toggle"
                   data-toggle="dropdown"
                   role="button"
@@ -196,10 +196,10 @@
                   aria-expanded="false"
                 >
                   <i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i>
-                  <span>Pages</span>
+                  <span>Categories</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-left">
-                  <li class=" "><a href="about_us.html">About</a></li>
+                  <li class=" "><a href="/">My Categories</a></li>
                   <li class="dropdown dropdown-submenu ">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                       Team
@@ -250,7 +250,7 @@
                   aria-expanded="false"
                 >
                   <i class="fa fa-file-text-o bg-color-2" aria-hidden="true"></i>
-                  <span>Courses</span>
+                  <span>Tasks</span>
                 </a>
                 <ul class="row dropdown-menu">
                   <li class="col-sm-3 col-xs-12">
@@ -516,6 +516,7 @@
         </div>
       </nav>
     </header>
+
     <router-view />
 
     <footer>
