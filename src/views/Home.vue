@@ -1,37 +1,25 @@
 <template>
   <div class="home">
-    <h1>All Categories</h1>
-    <div v-for="category in categories">
-      <img v-bind:src="category.image" alt="category.name" />
-      <h2>{{ category.name }}</h2>
-      <router-link v-bind:to="`/category/${category.id}`">View {{ category.name }}</router-link>
-    </div>
-    <h1>New Category</h1>
-    Name:
-    <input v-model="categoryName" type="text" />
-    Image:
-    <input v-model="categoryImage" type="text" />
-    <button v-on:click="createCategory()">Create Category</button>
-
     <section class="mainContent full-width clearfix featureSection">
       <div class="container">
         <div class="sectionTitle text-center">
           <h2>
             <span class="shape shape-left bg-color-4"></span>
-            <span>Our Features</span>
+            <span>My Categories</span>
             <span class="shape shape-right bg-color-4"></span>
           </h2>
         </div>
 
         <div class="row">
-          <div vclass="col-sm-4 col-xs-12">
+          <div v-for="category in categories" class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
               <span class="media-left bg-color-1">
                 <i class="fa fa-graduation-cap bg-color-1" aria-hidden="true"></i>
               </span>
               <div class="media-body">
-                <h3 class="media-heading color-1">Experience Teachers</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <h3 class="media-heading color-1">{{ category.name }}</h3>
+                <router-link v-bind:to="`/category/${category.id}`">View {{ category.name }} tasks</router-link>
+                <p></p>
               </div>
             </div>
           </div>
@@ -93,6 +81,13 @@
         </div>
       </div>
     </section>
+
+    <h1>New Category</h1>
+    Name:
+    <input v-model="categoryName" type="text" />
+    Image:
+    <input v-model="categoryImage" type="text" />
+    <button v-on:click="createCategory()">Create Category</button>
   </div>
 </template>
 
