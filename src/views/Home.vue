@@ -23,18 +23,28 @@
               </div>
             </div>
           </div>
-          <!--   <div class="col-sm-4 col-xs-12">
+          <div class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
               <span class="media-left bg-color-2">
                 <i class="fa fa-leaf bg-color-2" aria-hidden="true"></i>
               </span>
               <div class="media-body">
-                <h3 class="media-heading color-2">Physical Activity</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <h3 class="media-heading color-2">New Category</h3>
+                <div>
+                  Name:
+                  <input v-model="categoryName" type="text" />
+                </div>
+                <div>
+                  Image:
+                  <input v-model="categoryImage" type="text" />
+                  <div>
+                    <button v-on:click="createCategory">Add</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-4 col-xs-12">
+          <!-- <div class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
               <span class="media-left bg-color-3">
                 <i class="fa fa-car bg-color-3" aria-hidden="true"></i>

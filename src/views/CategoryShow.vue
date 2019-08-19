@@ -45,53 +45,38 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mainContent full-width clearfix">
-      <div class="container">
-        <div class="sectionTitle text-center">
-          <h2>
-            <span class="shape shape-left bg-color-4"></span>
-            <span>Create Task</span>
-            <span class="shape shape-right bg-color-4"></span>
-          </h2>
-        </div>
-
-        <div class="row 1">
           <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="pricingTable">
               <div class="priceUper">
-                <div class="priceTitle bg-color-1">
+                <div class="priceTitle bg-color-2">
                   <h3>New Task</h3>
                 </div>
               </div>
               <div class="priceLower">
                 <ul class="list-unstyled priceOffer">
                   <li>
-                    <i class="fa fa-taxi color-1" aria-hidden="true"></i>
+                    <i class="fa fa-taxi color-2" aria-hidden="true"></i>
                     Description:
                     <input v-model="taskDescription" type="text" />
                   </li>
                   <li>
-                    <i class="fa fa-birthday-cake color-1" aria-hidden="true"></i>
+                    <i class="fa fa-birthday-cake color-2" aria-hidden="true"></i>
                     Duration:
                     <input v-model="taskDuration" type="text" />
                   </li>
                   <li>
-                    <i class="fa fa-medkit color-1" aria-hidden="true"></i>
+                    <i class="fa fa-medkit color-2" aria-hidden="true"></i>
                     Due Date:
                     <input v-model="taskDueDate" type="text" />
                   </li>
                   <li>
-                    <i class="fa fa-paint-brush color-1" aria-hidden="true"></i>
+                    <i class="fa fa-paint-brush color-2" aria-hidden="true"></i>
                     Start time:
                     <input v-model="taskStartTime" type="text" />
                   </li>
                 </ul>
                 <div class="priceBtn">
-                  <div v-on:click="createTask" class="btn btn-primary bg-color-1">
+                  <div v-on:click="createTask" class="btn btn-primary bg-color-2">
                     Create Task
                   </div>
                 </div>
@@ -101,6 +86,7 @@
         </div>
       </div>
     </section>
+
     <div>
       Name:
       <input v-model="category.name" type="text" />
@@ -121,7 +107,6 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
       category: [],
       tasks: [],
       name: "",
