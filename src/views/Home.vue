@@ -91,14 +91,6 @@
         </div>
       </div>
     </section>
-
-    <h1>New Category</h1>
-    Name:
-    <input v-model="categoryName" type="text" />
-    Image:
-    <input v-model="categoryImage" type="text" />
-    <button v-on:click="createCategory()">Create Category</button>
-  </div>
 </template>
 
 <style></style>
