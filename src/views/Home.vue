@@ -18,7 +18,9 @@
               </span>
               <div class="media-body">
                 <h3 class="media-heading color-1">{{ category.name }}</h3>
-                <router-link v-bind:to="`/category/${category.id}`">View {{ category.name }} tasks</router-link>
+                <div>
+                  <router-link v-bind:to="`/category/${category.id}`">View tasks</router-link>
+                </div>
                 <p></p>
               </div>
             </div>
@@ -91,6 +93,7 @@
         </div>
       </div>
     </section>
+  </div>
 </template>
 
 <style></style>

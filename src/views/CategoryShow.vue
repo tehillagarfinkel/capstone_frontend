@@ -87,6 +87,7 @@
       </div>
     </section>
 
+    <div><a href="/" class="btn btn-primary btn-lg" role="button">Back to my categories</a></div>
     <div>
       Name:
       <input v-model="category.name" type="text" />
@@ -95,7 +96,6 @@
       <button v-on:click="updateCategory(category)">Update Category</button>
       <button v-on:click="destroyCategory(category)">Delete Category</button>
     </div>
-    <router-link to="/">Back to my categories</router-link>
   </div>
 </template>
 
