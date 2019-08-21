@@ -40,7 +40,7 @@
                   Image:
                   <input v-model="categoryImage" type="text" />
                   <div>
-                    <button v-on:click="createCategory">Add</button>
+                    <button v-on:click="createCategory" type="button" class="btn btn-success btn-sm">Add</button>
                   </div>
                 </div>
               </div>
