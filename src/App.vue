@@ -41,108 +41,14 @@
             </div>
             <div class="col-sm-5">
               <ul class="list-inline functionList">
-                <li><i class="fa fa-globe bg-color-4" aria-hidden="true"></i></li>
-                <li class="LanguageList">
-                  <select name="guiest_id1" id="guiest_id1" class="select-drop">
-                    <option value="0">
-                      <i class="fa fa-globe bg-color-4" aria-hidden="true"></i>
-                      Language
-                    </option>
-                    <option value="1">English</option>
-                    <option value="2">Spanish</option>
-                    <option value="3">Hindi</option>
-                  </select>
-                </li>
                 <li>
                   <i class="fa fa-unlock-alt bg-color-5" aria-hidden="true"></i>
-                  <a href="#loginModal" data-toggle="modal">Login</a>
-                  <span>or</span>
-                  <a href="#createAccount" data-toggle="modal">Create an account</a>
-                </li>
-                <li class="cart-dropdown">
-                  <a href="#" class="bg-color-6 shop-cart">
-                    <i class="fa fa-shopping-basket " aria-hidden="true"></i>
-                    <span class="badge bg-color-1">3</span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-right">
-                    <li>
-                      <i class="fa fa-shopping-basket " aria-hidden="true"></i>
-                      3 items in your cart
-                    </li>
-                    <li>
-                      <a href="single-product.html">
-                        <div class="media">
-                          <div class="media-left">
-                            <img src="img/home/cart/cart-img.png" alt="cart-Image" />
-                          </div>
-                          <div class="media-body">
-                            <h4>Barbie Racing Car</h4>
-                            <div class="price">
-                              <span class="color-1">$50</span>
-                            </div>
-                            <span class="amount">Qnt: 1</span>
-                          </div>
-                        </div>
-                      </a>
-                      <span class="cancel"><i class="fa fa-close" aria-hidden="true"></i></span>
-                    </li>
-                    <li>
-                      <a href="single-product.html">
-                        <div class="media">
-                          <div class="media-left">
-                            <img src="img/home/cart/cart-img.png" alt="cart-Image" />
-                          </div>
-                          <div class="media-body">
-                            <h4>Barbie Racing Car</h4>
-                            <div class="price">
-                              <span class="color-1">$50</span>
-                            </div>
-                            <span class="amount">Qnt: 1</span>
-                          </div>
-                        </div>
-                      </a>
-                      <span class="cancel"><i class="fa fa-close" aria-hidden="true"></i></span>
-                    </li>
-                    <li>
-                      <a href="single-product.html">
-                        <div class="media">
-                          <div class="media-left">
-                            <img src="img/home/cart/cart-img.png" alt="cart-Image" />
-                          </div>
-                          <div class="media-body">
-                            <h4>Barbie Racing Car</h4>
-                            <div class="price">
-                              <span class="color-1">$50</span>
-                            </div>
-                            <span class="amount">Qnt: 1</span>
-                          </div>
-                        </div>
-                      </a>
-                      <span class="cancel"><i class="fa fa-close" aria-hidden="true"></i></span>
-                    </li>
-                    <li>
-                      <span class="cart-total">Subtotal</span>
-                      <span class="cart-price">$150</span>
-                      <div class="cart-button">
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='checkout-step-1.html';"
-                          data-cf-modified-ba74d78c1d7257bacd4f66ec-=""
-                        >
-                          Checkout
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='cart-page.html';"
-                          data-cf-modified-ba74d78c1d7257bacd4f66ec-=""
-                        >
-                          View Cart
-                        </button>
-                      </div>
-                    </li>
-                  </ul>
+                  <a href="/login" data-toggle="modal">Login</a>
+
+                  <i class="fa fa-unlock-alt bg-color-5" aria-hidden="true"></i>
+                  <a href="/signup" data-toggle="modal">Create an account</a>
+                  <i class="fa fa-unlock-alt bg-color-5" aria-hidden="true"></i>
+                  <a href="/logout" data-toggle="modal">Logout</a>
                 </li>
               </ul>
             </div>
