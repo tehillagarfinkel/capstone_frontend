@@ -85,12 +85,12 @@
                   <i class="fa fa-home bg-color-1" aria-hidden="true"></i>
                   <span class="active">Home</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-left">
+                <!-- <ul class="dropdown-menu dropdown-menu-left">
                   <li class=" active "><a href="/">Kidz School</a></li>
                   <li class=""><a href="index-v2.html">Kidz Store</a></li>
                   <li class=""><a href="index-v3.html">Kidz Daycare</a></li>
                   <li class=""><a href="index-v4.html">Kidz Fashion</a></li>
-                </ul>
+                </ul> -->
               </li>
               <li class="dropdown singleDrop color-3 ">
                 <a
@@ -106,7 +106,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-left">
                   <li class=" "><a href="/category">My Categories</a></li>
-                  <li class="dropdown dropdown-submenu ">
+                  <!--     <li class="dropdown dropdown-submenu ">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                       Team
                       <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -115,9 +115,9 @@
                       <li class=" "><a href="teachers.html">Teachers</a></li>
                       <li class=" "><a href="teachers-details.html">Teacher Details</a></li>
                     </ul>
-                  </li>
-                  <li class=" "><a href="testimonial.html">Testimonial</a></li>
-                  <li
+                  </li> -->
+                  <!--  <li class=" "><a href="testimonial.html">Testimonial</a></li> -->
+                  <!--     <li
                     class="dropdown dropdown-submenu
                      ||
                      ||
@@ -132,8 +132,8 @@
                       <li class=""><a href="single-event-left-sidebar.html">Single Event Left Sidebar</a></li>
                       <li class=""><a href="single-event-right-sidebar.html">Single Event Right Sidebar</a></li>
                     </ul>
-                  </li>
-                  <li class=""><a href="photo-gallery.html">Photo Gallery</a></li>
+                  </li> -->
+                  <!-- <li class=""><a href="photo-gallery.html">Photo Gallery</a></li>
                   <li class=""><a href="pricing-table.html">Pricing Table</a></li>
                   <li class=""><a href="services.html">Services</a></li>
                   <li class=""><a href="service-details.html">Services Details</a></li>
@@ -142,7 +142,7 @@
                   <li class=""><a href="faq.html">FAQ</a></li>
                   <li class=""><a href="sign-up-or-login.html">Sign Up / Login</a></li>
                   <li class=""><a href="404.html">Error 404</a></li>
-                  <li><a href="coming-soon.html">Coming Soon</a></li>
+                  <li><a href="coming-soon.html">Coming Soon</a></li> -->
                 </ul>
               </li>
               <li class=" dropdown megaDropMenu color-2 ">
@@ -195,6 +195,41 @@
                       <li class=""><a href="checkout-step-3.html">Confirmation</a></li>
                     </ul>
                   </li>
+                </ul>
+              </li>
+              <li class="dropdown singleDrop color-4 ">
+                <a
+                  href="javascript:void(0)"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fa fa-pencil-square-o bg-color-4" aria-hidden="true"></i>
+                  <span>Calendar</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li
+                    class="dropdown dropdown-submenu  
+                     || 
+                     || 
+                     "
+                  ></li>
+                  <li class=""><a href="/calendar">My Calendar</a></li>
+                  <!--    <li class=""><a href="category.html">Product Categories</a></li>
+                  <li class=""><a href="cart-page.html">Cart</a></li>
+                  <li class="dropdown dropdown-submenu">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                      Checkout
+                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class=" "><a href="checkout-step-1.html">Personal Info</a></li>
+                      <li class=" "><a href="checkout-step-2.html">Payment Info</a></li>
+                      <li class=" "><a href="checkout-step-3.html">Confirmation</a></li>
+                    </ul>
+                  </li> -->
                 </ul>
               </li>
             </ul>

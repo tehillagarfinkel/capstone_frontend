@@ -1,6 +1,14 @@
 <template>
   <div>
-    <FullCalendar defaultView="dayGridMonth" :plugins="calendarPlugins" :events="calendarTasks" />
+    <FullCalendar
+      defaultView="dayGridMonth"
+      :plugins="calendarPlugins"
+      :events="calendarTasks"
+      :editable="true"
+      v-on:eventDrop="dropEvent"
+    />
+    <!-- <FullCalendar defaultView="dayGridMonth" :plugins="[calendarPlugins, interactionPlugin ]" :events="calendarTasks"
+    editable: true /> -->
   </div>
 </template>
 
@@ -13,6 +21,7 @@
 import axios from "axios";
 import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
 
 export default {
   components: {
@@ -20,7 +29,7 @@ export default {
   },
   data() {
     return {
-      calendarPlugins: [dayGridPlugin],
+      calendarPlugins: [dayGridPlugin, interactionPlugin],
       tasks: []
     };
   },
@@ -40,6 +49,11 @@ export default {
       return this.tasks.map(task => {
         return { title: task.description, date: task.due_date };
       });
+    }
+  },
+  methods: {
+    dropEvent: function(data) {
+      console.log("dropEvent", data);
     }
   }
 };

@@ -28,7 +28,7 @@
           <div class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
               <span class="media-left bg-color-2">
-                <i class="fa fa-leaf bg-color-2" aria-hidden="true"></i>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               </span>
               <div class="media-body">
                 <h3 class="media-heading color-2">New Category</h3>
