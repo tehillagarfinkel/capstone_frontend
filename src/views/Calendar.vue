@@ -7,8 +7,6 @@
       :editable="true"
       v-on:eventDrop="dropEvent"
     />
-    <!-- <FullCalendar defaultView="dayGridMonth" :plugins="[calendarPlugins, interactionPlugin ]" :events="calendarTasks"
-    editable: true /> -->
   </div>
 </template>
 
@@ -30,7 +28,8 @@ export default {
   data() {
     return {
       calendarPlugins: [dayGridPlugin, interactionPlugin],
-      tasks: []
+      tasks: [],
+      events: []
     };
   },
   created: function() {
@@ -43,12 +42,20 @@ export default {
         });
       });
     });
+    axios.get("/api/calendars").then(response => {
+      console.log(response.data);
+      this.events = response.data.calendar_events;
+    });
   },
   computed: {
     calendarTasks: function() {
-      return this.tasks.map(task => {
+      const allTasks = this.tasks.map(task => {
         return { title: task.description, date: task.due_date };
       });
+      this.events.forEach(event => {
+        allTasks.push({ title: event.summary, date: event.start });
+      });
+      return allTasks;
     }
   },
   methods: {
