@@ -80,7 +80,7 @@
                         </div>
                         <div>
                           Due Date:
-                          <input v-model="task.due_date" type="text" />
+                          <datetime v-model="task.due_date"></datetime>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -129,7 +129,8 @@
                   <li>
                     <i class="fa fa-medkit color-2" aria-hidden="true"></i>
                     Due Date:
-                    <input v-model="taskDueDate" type="text" />
+                    <datetime v-model="taskDueDate"></datetime>
+                    <!--  <input v-model="taskDueDate" type="text" /> -->
                   </li>
                   <li>
                     <i class="fa fa-paint-brush color-2" aria-hidden="true"></i>
@@ -158,9 +159,6 @@
       <button v-on:click="updateCategory(category)">Update Category</button>
       <button v-on:click="destroyCategory(category)">Delete Category</button>
     </div>
-    <div>
-      <datetime v-model="date"></datetime>
-    </div>
   </div>
 </template>
 
@@ -171,13 +169,6 @@ import axios from "axios";
 import { Datetime } from "vue-datetime";
 
 export default {
-  // Vue.extend({
-  //   template: '...',
-  //   components: {
-  //     datetime: Datetime
-  //   }
-  // });
-
   data: function() {
     return {
       category: [],
