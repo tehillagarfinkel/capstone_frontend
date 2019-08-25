@@ -158,6 +158,9 @@
       <button v-on:click="updateCategory(category)">Update Category</button>
       <button v-on:click="destroyCategory(category)">Delete Category</button>
     </div>
+    <div>
+      <datetime v-model="date"></datetime>
+    </div>
   </div>
 </template>
 
@@ -165,8 +168,16 @@
 
 <script>
 import axios from "axios";
+import { Datetime } from "vue-datetime";
 
 export default {
+  // Vue.extend({
+  //   template: '...',
+  //   components: {
+  //     datetime: Datetime
+  //   }
+  // });
+
   data: function() {
     return {
       category: [],
