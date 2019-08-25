@@ -150,7 +150,7 @@
       </div>
     </section>
 
-    <div><a href="/" class="btn btn-primary btn-lg" role="button">Back to my categories</a></div>
+    <div><a href="/category" class="btn btn-primary btn-lg" role="button">Back to my categories</a></div>
     <div>
       Name:
       <input v-model="category.name" type="text" />
@@ -225,7 +225,7 @@ export default {
         .patch("/api/categories/" + this.$route.params.id, params)
         .then(response => {
           console.log(response.data);
-          this.$router.push("/");
+          this.$router.push("/category");
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -233,7 +233,7 @@ export default {
     },
     destroyCategory: function(category) {
       axios.delete("api/categories/" + this.$route.params.id).then(response => {
-        this.$router.push("/");
+        this.$router.push("/category");
       });
     },
     createTask: function() {
