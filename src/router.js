@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Signup from "./views/Signup.vue";
 import Login from "./views/Login.vue";
 import Logout from "./views/Logout.vue";
+import CategoryIndex from "./views/CategoryIndex.vue";
 import CategoryShow from "./views/CategoryShow.vue";
 
 Vue.use(Router);
@@ -39,6 +40,11 @@ export default new Router({
       path: "/logout",
       name: "logout",
       component: Logout
+    },
+    {
+      path: "/category",
+      name: "category-index",
+      component: CategoryIndex
     },
     {
       path: "/category/:id",
