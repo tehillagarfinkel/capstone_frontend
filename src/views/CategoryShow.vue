@@ -125,6 +125,7 @@
                     <i class="fa fa-birthday-cake color-2" aria-hidden="true"></i>
                     Duration:
                     <input v-model="taskDuration" type="text" />
+                    <timeselector v-model="taskDuration"></timeselector>
                   </li>
                   <li>
                     <i class="fa fa-medkit color-2" aria-hidden="true"></i>
@@ -159,6 +160,7 @@
       <button v-on:click="updateCategory(category)">Update Category</button>
       <button v-on:click="destroyCategory(category)">Delete Category</button>
     </div>
+    <timeselector v-model="taskStartTime"></timeselector>
   </div>
 </template>
 
@@ -167,8 +169,12 @@
 <script>
 import axios from "axios";
 import { Datetime } from "vue-datetime";
+import Timeselector from "vue-timeselector";
 
 export default {
+  components: {
+    Timeselector
+  },
   data: function() {
     return {
       category: [],
