@@ -1,13 +1,7 @@
 <template>
-  <FullCalendar
-    defaultView="dayGridMonth"
-    :plugins="calendarPlugins"
-    :events="[
-      { title: 'event 1', date: '2019-08-01' },
-      { title: 'event 2', date: '2019-08-02' },
-      { title: 'event 3', date: this.tasks }
-    ]"
-  />
+  <div>
+    <FullCalendar defaultView="dayGridMonth" :plugins="calendarPlugins" :events="calendarTasks" />
+  </div>
 </template>
 
 <style lang="scss">
@@ -31,14 +25,22 @@ export default {
     };
   },
   created: function() {
-    axios.get("/api/categories/1").then(response => {
-      // console.log(response.data);
-      // // this.category = response.data;
-      // // this.tasks = response.data.tasks;
-      // console.log(this.tasks[0].due_date);
-      this.tasks = response.data.tasks[0].due_date;
-      console.log("task is:", this.tasks);
+    axios.get("/api/categories").then(response => {
+      console.log(response.data);
+      var categories = response.data;
+      categories.forEach(category => {
+        category.tasks.forEach(task => {
+          this.tasks.push(task);
+        });
+      });
     });
+  },
+  computed: {
+    calendarTasks: function() {
+      return this.tasks.map(task => {
+        return { title: task.description, date: task.due_date };
+      });
+    }
   }
 };
 </script>
