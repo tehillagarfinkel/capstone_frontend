@@ -105,7 +105,7 @@
                   <span>Categories</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-left">
-                  <li class=" "><a href="/">My Categories</a></li>
+                  <li class=" "><a href="/category">My Categories</a></li>
                   <li class="dropdown dropdown-submenu ">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                       Team

@@ -6,6 +6,7 @@ import Login from "./views/Login.vue";
 import Logout from "./views/Logout.vue";
 import CategoryIndex from "./views/CategoryIndex.vue";
 import CategoryShow from "./views/CategoryShow.vue";
+import Calendar from "./views/Calendar.vue";
 
 Vue.use(Router);
 
@@ -50,6 +51,11 @@ export default new Router({
       path: "/category/:id",
       name: "category-show",
       component: CategoryShow
+    },
+    {
+      path: "/calendar",
+      name: "calendar",
+      component: Calendar
     }
   ]
 });
