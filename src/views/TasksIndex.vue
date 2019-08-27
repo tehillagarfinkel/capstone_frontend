@@ -5,7 +5,7 @@
         <div class="sectionTitle text-center">
           <h2>
             <span class="shape shape-left bg-color-4"></span>
-            <span>My {{ category.name }} tasks</span>
+            <span>All Tasks</span>
             <span class="shape shape-right bg-color-4"></span>
           </h2>
         </div>
@@ -118,6 +118,33 @@
                 <ul class="list-unstyled priceOffer">
                   <li>
                     <i class="fa fa-taxi color-2" aria-hidden="true"></i>
+                    Category:
+                    <input v-model="taskCategory" type="text" />
+                    <!--   <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button
+                          class="btn btn-outline-secondary dropdown-toggle"
+                          type="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          Dropdown
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div role="separator" class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </div> -->
+                    <!--   <input type="text" class="form-control" aria-label="Text input with dropdown button" />
+                    </div> -->
+                  </li>
+
+                  <li>
+                    <i class="fa fa-taxi color-2" aria-hidden="true"></i>
                     Description:
                     <input v-model="taskDescription" type="text" />
                   </li>
@@ -148,16 +175,6 @@
         </div>
       </div>
     </section>
-
-    <div><a href="/category" class="btn btn-primary btn-lg" role="button">Back to my categories</a></div>
-    <div>
-      Name:
-      <input v-model="category.name" type="text" />
-      Image:
-      <input v-model="category.image" type="text" />
-      <button v-on:click="updateCategory(category)">Update Category</button>
-      <button v-on:click="destroyCategory(category)">Delete Category</button>
-    </div>
   </div>
 </template>
 
@@ -174,6 +191,7 @@ export default {
       tasks: [],
       name: "",
       image: "",
+      taskCategory: "",
       taskDescription: "",
       taskDuration: "",
       taskDueDate: "",
@@ -181,10 +199,15 @@ export default {
     };
   },
   created: function() {
-    axios.get("/api/categories/" + this.$route.params.id).then(response => {
+    axios.get("/api/categories/").then(response => {
       console.log(response.data);
-      this.category = response.data;
-      this.tasks = response.data.tasks;
+      var categories = response.data;
+      categories.forEach(category => {
+        category.tasks.forEach(task => {
+          this.tasks.push(task);
+        });
+      });
+      console.log("tasks are", this.tasks);
     });
   },
   methods: {
@@ -215,29 +238,9 @@ export default {
         this.$router.push(`/category/${task.category_id}`);
       });
     },
-    updateCategory: function(category) {
-      var params = {
-        name: category.name,
-        image: category.image
-      };
-      axios
-        .patch("/api/categories/" + this.$route.params.id, params)
-        .then(response => {
-          console.log(response.data);
-          this.$router.push("/category");
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors;
-        });
-    },
-    destroyCategory: function(category) {
-      axios.delete("api/categories/" + this.$route.params.id).then(response => {
-        this.$router.push("/category");
-      });
-    },
     createTask: function() {
       var params = {
-        category_id: this.category.id,
+        category_id: this.taskCategory,
         description: this.taskDescription,
         duration: this.taskDuration,
         due_date: this.taskDueDate,
@@ -246,6 +249,7 @@ export default {
       axios.post("/api/tasks", params).then(response => {
         console.log(response.data);
         this.tasks.push(response.data);
+        this.taskCategory = "";
         this.taskDescription = "";
         this.taskDuration = "";
         this.taskDueDate = "";

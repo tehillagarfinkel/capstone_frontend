@@ -145,58 +145,23 @@
                   <li><a href="coming-soon.html">Coming Soon</a></li> -->
                 </ul>
               </li>
-              <li class=" dropdown megaDropMenu color-2 ">
+              <li class="dropdown singleDrop color-3 ">
                 <a
-                  href="javascript:void(0)"
+                  href="/"
                   class="dropdown-toggle"
                   data-toggle="dropdown"
-                  data-hover="dropdown"
-                  data-delay="300"
-                  data-close-others="true"
+                  role="button"
+                  aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i class="fa fa-file-text-o bg-color-2" aria-hidden="true"></i>
+                  <i class="fa fa-list-ul bg-color-2" aria-hidden="true"></i>
                   <span>Tasks</span>
                 </a>
-                <ul class="row dropdown-menu">
-                  <li class="col-sm-3 col-xs-12">
-                    <ul class="list-unstyled">
-                      <li>Courses Grid</li>
-                      <li class=""><a href="course-grid-full.html">Courses Grid Fullwidth</a></li>
-                      <li class="">
-                        <a href="course-grid-left-sidebar.html">Courses Grid Left Sidebar</a>
-                      </li>
-                      <li class="">
-                        <a href="course-grid-right-sidebar.html">Courses Grid Right Sidebar</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="col-sm-3 col-xs-12">
-                    <ul class="list-unstyled">
-                      <li>Courses List</li>
-                      <li class=""><a href="course-list-fullwidth.html">Courses List Fullwidth</a></li>
-                      <li class=""><a href="course-list-left-sidebar.html">Courses List left Sidebar</a></li>
-                      <li class=""><a href="course-list-right-sidebar.html">Courses List Right Sidebar</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-sm-3 col-xs-12">
-                    <ul class="list-unstyled">
-                      <li>Single Course</li>
-                      <li class=""><a href="course-single.html">Single Course Fullwidth</a></li>
-                      <li class=""><a href="course-single-left-sidebar.html">Single Course left Sidebar</a></li>
-                      <li class=""><a href="course-single-right-sidebar.html">Single Course Right Sidebar</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-sm-3 col-xs-12">
-                    <ul class="list-unstyled">
-                      <li>Checkout</li>
-                      <li class=""><a href="checkout-step-1.html">Personal Info</a></li>
-                      <li class=""><a href="checkout-step-2.html">Payment Info</a></li>
-                      <li class=""><a href="checkout-step-3.html">Confirmation</a></li>
-                    </ul>
-                  </li>
+                <ul class="dropdown-menu dropdown-menu-left">
+                  <li class=" "><a href="/tasks">My Tasks</a></li>
                 </ul>
               </li>
+
               <li class="dropdown singleDrop color-4 ">
                 <a
                   href="javascript:void(0)"

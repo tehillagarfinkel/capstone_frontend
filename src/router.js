@@ -7,6 +7,7 @@ import Logout from "./views/Logout.vue";
 import CategoryIndex from "./views/CategoryIndex.vue";
 import CategoryShow from "./views/CategoryShow.vue";
 import Calendar from "./views/Calendar.vue";
+import TasksIndex from "./views/TasksIndex.vue";
 
 Vue.use(Router);
 
@@ -56,6 +57,11 @@ export default new Router({
       path: "/calendar",
       name: "calendar",
       component: Calendar
+    },
+    {
+      path: "/tasks",
+      name: "tasks",
+      component: TasksIndex
     }
   ]
 });
