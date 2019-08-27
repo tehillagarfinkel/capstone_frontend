@@ -20,7 +20,8 @@
     "vue-datetime": "^1.0.0-beta.10",
     "vue-router": "^3.0.3",
     "vue-timeselector": "^0.1.7",
-    "weekstart": "^1.0.0"
+    "weekstart": "^1.0.0",
+    "vue2-filters": "^0.7.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",

@@ -8,10 +8,14 @@
             <span>All Tasks</span>
             <span class="shape shape-right bg-color-4"></span>
           </h2>
+          <div class="form-group">
+            <span>Search my tasks:</span>
+            <input v-model="searchFilter" type="text" />
+          </div>
         </div>
 
         <div class="row">
-          <div v-for="task in tasks" class="col-lg-3 col-sm-6 col-xs-12">
+          <div v-for="task in filterBy(tasks, searchFilter, 'description')" class="col-lg-3 col-sm-6 col-xs-12">
             <div class="pricingTable">
               <div class="priceUper">
                 <div class="priceTitle bg-color-1">
@@ -107,7 +111,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-6 col-xs-12">
+          <!-- <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="pricingTable">
               <div class="priceUper">
                 <div class="priceTitle bg-color-2">
@@ -120,7 +124,7 @@
                     <i class="fa fa-taxi color-2" aria-hidden="true"></i>
                     Category:
                     <input v-model="taskCategory" type="text" />
-                    <!--   <div class="input-group mb-3">
+                      <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <button
                           class="btn btn-outline-secondary dropdown-toggle"
@@ -138,9 +142,9 @@
                           <div role="separator" class="dropdown-divider"></div>
                           <a class="dropdown-item" href="#">Separated link</a>
                         </div>
-                      </div> -->
+                      </div>
                     <!--   <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                    </div> -->
+                    </div>
                   </li>
 
                   <li>
@@ -171,7 +175,8 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+          -->
         </div>
       </div>
     </section>
@@ -183,11 +188,13 @@
 <script>
 import axios from "axios";
 import { Datetime } from "vue-datetime";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
-      category: [],
+      searchFilter: "",
       tasks: [],
       name: "",
       image: "",
