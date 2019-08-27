@@ -72,7 +72,7 @@
                         </div>
                         <div>
                           Duration:
-                          <input v-model="task.duration" type="text" />
+                          <input type="number" v-model="task.duration" />
                         </div>
                         <div>
                           Start Time:
@@ -123,15 +123,13 @@
                   </li>
                   <li>
                     <i class="fa fa-birthday-cake color-2" aria-hidden="true"></i>
-                    Duration:
-                    <input v-model="taskDuration" type="text" />
-                    <timeselector v-model="taskDuration"></timeselector>
+                    Duration (min):
+                    <input type="number" v-model="taskDuration" />
                   </li>
                   <li>
                     <i class="fa fa-medkit color-2" aria-hidden="true"></i>
                     Due Date:
                     <datetime v-model="taskDueDate"></datetime>
-                    <!--  <input v-model="taskDueDate" type="text" /> -->
                   </li>
                   <li>
                     <i class="fa fa-paint-brush color-2" aria-hidden="true"></i>
@@ -160,7 +158,6 @@
       <button v-on:click="updateCategory(category)">Update Category</button>
       <button v-on:click="destroyCategory(category)">Delete Category</button>
     </div>
-    <timeselector v-model="taskStartTime"></timeselector>
   </div>
 </template>
 
@@ -169,12 +166,8 @@
 <script>
 import axios from "axios";
 import { Datetime } from "vue-datetime";
-import Timeselector from "vue-timeselector";
 
 export default {
-  components: {
-    Timeselector
-  },
   data: function() {
     return {
       category: [],

@@ -1,10 +1,11 @@
 <template>
   <div>
     <FullCalendar
-      defaultView="dayGridMonth"
+      defaultView="timeGridWeek"
       :plugins="calendarPlugins"
       :events="calendarTasks"
       :editable="true"
+      :timeZone="`local`"
       v-on:eventDrop="dropEvent"
     />
   </div>
@@ -19,7 +20,10 @@
 import axios from "axios";
 import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { formatDate } from "@fullcalendar/core";
+import moment from "moment";
 
 export default {
   components: {
@@ -27,7 +31,7 @@ export default {
   },
   data() {
     return {
-      calendarPlugins: [dayGridPlugin, interactionPlugin],
+      calendarPlugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       tasks: [],
       events: []
     };
@@ -43,17 +47,25 @@ export default {
       });
     });
     axios.get("/api/calendars").then(response => {
-      console.log(response.data);
+      console.log("events", response.data);
       this.events = response.data.calendar_events;
     });
   },
   computed: {
     calendarTasks: function() {
       const allTasks = this.tasks.map(task => {
-        return { title: task.description, date: task.due_date };
+        return { title: task.description, date: task.due_date, backgroundColor: "#0f0", allDay: true };
       });
       this.events.forEach(event => {
-        allTasks.push({ title: event.summary, date: event.start });
+        allTasks.push({
+          title: event.summary,
+          // date: event.start,
+          start: moment(event.start).toDate(),
+          end: moment(event.end).toDate(),
+          allDay: true,
+          backgroundColor: "#f00"
+        });
+        console.log("event.start", event.start, "formatDate", moment(event.start).toDate());
       });
       return allTasks;
     }
