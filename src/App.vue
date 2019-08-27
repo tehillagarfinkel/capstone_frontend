@@ -23,31 +23,15 @@
       <div class="top-info-bar bg-color-7 hidden-xs">
         <div class="container">
           <div class="row">
-            <div class="col-sm-7">
-              <ul class="list-inline topList">
-                <li>
-                  <i class="fa fa-envelope bg-color-1" aria-hidden="true"></i>
-                  <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
-                </li>
-                <li>
-                  <i class="fa fa-phone bg-color-2" aria-hidden="true"></i>
-                  +1 234 567 8900
-                </li>
-                <li>
-                  <i class="fa fa-clock-o bg-color-6" aria-hidden="true"></i>
-                  Open: 9am - 6am
-                </li>
-              </ul>
-            </div>
             <div class="col-sm-5">
               <ul class="list-inline functionList">
                 <li>
                   <i class="fa fa-unlock-alt bg-color-5" aria-hidden="true"></i>
                   <a href="/login" data-toggle="modal">Login</a>
 
-                  <i class="fa fa-unlock-alt bg-color-5" aria-hidden="true"></i>
+                  <i class="fa fa-plus-circle bg-color-5" aria-hidden="true"></i>
                   <a href="/signup" data-toggle="modal">Create an account</a>
-                  <i class="fa fa-unlock-alt bg-color-5" aria-hidden="true"></i>
+                  <i class="fa fa-lock bg-color-5" aria-hidden="true"></i>
                   <a href="/logout" data-toggle="modal">Logout</a>
                 </li>
               </ul>
@@ -105,44 +89,18 @@
                   <span>Categories</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-left">
-                  <li class=" "><a href="/category">My Categories</a></li>
-                  <!--     <li class="dropdown dropdown-submenu ">
+                  <li class="dropdown dropdown-submenu ">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                      Team
+                      My Categories
                       <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class=" "><a href="teachers.html">Teachers</a></li>
-                      <li class=" "><a href="teachers-details.html">Teacher Details</a></li>
+                      <li class=" " v-for="category in categories">
+                        <!--     <a href="`/category${category.id}`">{{ category.name }}</a> -->
+                        <a href="/category">{{ category.name }}</a>
+                      </li>
                     </ul>
-                  </li> -->
-                  <!--  <li class=" "><a href="testimonial.html">Testimonial</a></li> -->
-                  <!--     <li
-                    class="dropdown dropdown-submenu
-                     ||
-                     ||
-                     "
-                  >
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                      Events
-                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li class=" "><a href="all-events.html">All Events</a></li>
-                      <li class=""><a href="single-event-left-sidebar.html">Single Event Left Sidebar</a></li>
-                      <li class=""><a href="single-event-right-sidebar.html">Single Event Right Sidebar</a></li>
-                    </ul>
-                  </li> -->
-                  <!-- <li class=""><a href="photo-gallery.html">Photo Gallery</a></li>
-                  <li class=""><a href="pricing-table.html">Pricing Table</a></li>
-                  <li class=""><a href="services.html">Services</a></li>
-                  <li class=""><a href="service-details.html">Services Details</a></li>
-                  <li class=""><a href="search-result.html">Search Results</a></li>
-                  <li class=""><a href="contact-us.html">Contact Us</a></li>
-                  <li class=""><a href="faq.html">FAQ</a></li>
-                  <li class=""><a href="sign-up-or-login.html">Sign Up / Login</a></li>
-                  <li class=""><a href="404.html">Error 404</a></li>
-                  <li><a href="coming-soon.html">Coming Soon</a></li> -->
+                  </li>
                 </ul>
               </li>
               <li class="dropdown singleDrop color-3 ">
@@ -350,3 +308,24 @@
 </template>
 
 <style></style>
+
+<script>
+import axios from "axios";
+
+export default {
+  data: function() {
+    return {
+      categories: [],
+      currentCategory: {},
+      categoryName: "",
+      categoryImage: ""
+    };
+  },
+  created: function() {
+    axios.get("/api/categories").then(response => {
+      console.log(response.data);
+      this.categories = response.data;
+    });
+  }
+};
+</script>
