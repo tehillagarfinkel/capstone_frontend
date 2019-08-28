@@ -58,7 +58,8 @@ export default {
       let allTasks = this.tasks.map(task => {
         return {
           title: `${task.description} - due ${task.due_date}`,
-          start: this.events[0].end
+          start: task.start || this.events[0].end,
+          id: task.id
         };
       });
       this.events.forEach(event => {
@@ -68,20 +69,21 @@ export default {
           end: event.end,
           backgroundColor: "#f00"
         });
-        console.log("event.start", event.start, "formatDate", moment(event.start).toDate());
       });
-      // allTasks = [
-      //   { title: "Meeting", start: "2019-08-28T10:30:00+00:00", end: "2019-08-28T12:30:00+00:00" },
-      //   { title: "Lunch", start: "2019-08-28T12:00:00+00:00" },
-      //   { title: "Birthday Party", start: "2019-08-29T07:00:00+00:00" },
-      //   { url: "http://google.com", title: "Click for Google", start: "2019-08-28" }
-      // ];
       return allTasks;
     }
   },
   methods: {
     dropEvent: function(data) {
       console.log("dropEvent", data);
+      console.log("the new event time is", data.event.start);
+      console.log("the task id is:", data.event.id);
+      var params = {
+        start: data.event.start
+      };
+      axios.patch("/api/tasks/" + data.event.id, params).then(response => {
+        console.log(response.data);
+      });
     }
   }
 };

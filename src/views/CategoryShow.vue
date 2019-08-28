@@ -30,7 +30,7 @@
                   </li>
                   <li>
                     <i class="fa fa-paint-brush color-1" aria-hidden="true"></i>
-                    Start time: {{ task.start_time }}
+                    Start time: {{ task.start }}
                   </li>
                   <li>
                     <i class="fa  fa-check-square-o color-1" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
                         </div>
                         <div>
                           Start Time:
-                          <input v-model="task.start_time" type="text" />
+                          <input v-model="task.start" type="text" />
                         </div>
                         <div>
                           Due Date:
@@ -196,7 +196,7 @@ export default {
       var params = {
         description: task.description,
         duration: task.duration,
-        start_time: task.start_time,
+        start: task.start,
         due_date: task.due_date
       };
       Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
@@ -207,7 +207,7 @@ export default {
           task = response.data;
           task.description = "";
           task.duration = "";
-          task.start_time = "";
+          task.start = "";
           task.due_date = "";
         })
         .catch(error => {
@@ -245,7 +245,7 @@ export default {
         description: this.taskDescription,
         duration: this.taskDuration,
         due_date: this.taskDueDate,
-        start_time: this.taskStartTime
+        start: this.taskStartTime
       };
       axios.post("/api/tasks", params).then(response => {
         console.log(response.data);

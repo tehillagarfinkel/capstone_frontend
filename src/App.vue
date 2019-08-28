@@ -315,7 +315,6 @@ export default {
   },
   created: function() {
     axios.get("/api/categories").then(response => {
-      console.log(response.data);
       this.categories = response.data;
     });
   }
