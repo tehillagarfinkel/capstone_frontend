@@ -88,18 +88,10 @@
                   <i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i>
                   <span>Categories</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-left">
-                  <li class="dropdown dropdown-submenu ">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                      My Categories
-                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li class=" " v-for="category in categories">
-                        <!--     <a href="`/category${category.id}`">{{ category.name }}</a> -->
-                        <a href="/category">{{ category.name }}</a>
-                      </li>
-                    </ul>
+                <ul class="dropdown-menu">
+                  <li><a href="/category">All Categories</a></li>
+                  <li class="" v-for="category in categories">
+                    <a v-bind:href="`/category/${category.id}`">{{ category.name }}</a>
                   </li>
                 </ul>
               </li>

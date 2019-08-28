@@ -14,6 +14,7 @@
 <style lang="scss">
 @import "~@fullcalendar/core/main.css";
 @import "~@fullcalendar/daygrid/main.css";
+@import "~@fullcalendar/timegrid/main.css";
 </style>
 
 <script>
@@ -33,40 +34,48 @@ export default {
     return {
       calendarPlugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       tasks: [],
-      events: []
+      events: [{}]
     };
   },
   created: function() {
-    axios.get("/api/categories").then(response => {
-      console.log(response.data);
-      var categories = response.data;
-      categories.forEach(category => {
-        category.tasks.forEach(task => {
-          this.tasks.push(task);
-        });
-      });
-    });
     axios.get("/api/calendars").then(response => {
       console.log("events", response.data);
       this.events = response.data.calendar_events;
+
+      axios.get("/api/categories").then(response => {
+        console.log(response.data);
+        var categories = response.data;
+        categories.forEach(category => {
+          category.tasks.forEach(task => {
+            this.tasks.push(task);
+          });
+        });
+      });
     });
   },
   computed: {
     calendarTasks: function() {
-      const allTasks = this.tasks.map(task => {
-        return { title: task.description, date: task.due_date, backgroundColor: "#0f0", allDay: true };
+      let allTasks = this.tasks.map(task => {
+        return {
+          title: `${task.description} - due ${task.due_date}`,
+          start: this.events[0].end
+        };
       });
       this.events.forEach(event => {
         allTasks.push({
           title: event.summary,
-          // date: event.start,
-          start: moment(event.start).toDate(),
-          end: moment(event.end).toDate(),
-          allDay: true,
+          start: event.start,
+          end: event.end,
           backgroundColor: "#f00"
         });
         console.log("event.start", event.start, "formatDate", moment(event.start).toDate());
       });
+      // allTasks = [
+      //   { title: "Meeting", start: "2019-08-28T10:30:00+00:00", end: "2019-08-28T12:30:00+00:00" },
+      //   { title: "Lunch", start: "2019-08-28T12:00:00+00:00" },
+      //   { title: "Birthday Party", start: "2019-08-29T07:00:00+00:00" },
+      //   { url: "http://google.com", title: "Click for Google", start: "2019-08-28" }
+      // ];
       return allTasks;
     }
   },

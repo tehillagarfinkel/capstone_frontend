@@ -40,6 +40,10 @@
                       <input v-on:click="markComplete(task)" type="checkbox" />
                     </div>
                   </li>
+                  <li>
+                    <i class="fa fa-calendar color-1" aria-hidden="true"></i>
+                    <router-link v-bind:to="`/calendar`">View in calendar</router-link>
+                  </li>
                 </ul>
                 <button
                   type="button"
