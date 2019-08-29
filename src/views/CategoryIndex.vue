@@ -11,13 +11,13 @@
         </div>
 
         <div class="row">
-          <div v-for="category in categories" class="col-sm-4 col-xs-12">
+          <div v-for="(category, index) in categories" class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
-              <span class="media-left bg-color-1">
-                <i class="fa fa-graduation-cap bg-color-1" aria-hidden="true"></i>
+              <span :class="`media-left bg-color-${index + 1}`">
+                <i :class="`fa fa-graduation-cap bg-color-${index + 1}`" aria-hidden="true"></i>
               </span>
               <div class="media-body">
-                <h3 class="media-heading color-1">{{ category.name }}</h3>
+                <h3 :class="`media-heading color-${index + 1}`">{{ category.name }}</h3>
                 <div>
                   <router-link v-bind:to="`/category/${category.id}`">View tasks</router-link>
                 </div>
@@ -27,11 +27,11 @@
           </div>
           <div class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
-              <span class="media-left bg-color-2">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <span class="media-left bg-color-5">
+                <i class="fa fa-plus" aria-hidden="true"></i>
               </span>
               <div class="media-body">
-                <h3 class="media-heading color-2">New Category</h3>
+                <h3 class="media-heading color-5">New Category</h3>
                 <div>
                   Name:
                   <input v-model="categoryName" type="text" />
@@ -46,50 +46,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="col-sm-4 col-xs-12">
-            <div class="media featuresContent">
-              <span class="media-left bg-color-3">
-                <i class="fa fa-car bg-color-3" aria-hidden="true"></i>
-              </span>
-              <div class="media-body">
-                <h3 class="media-heading color-3">Physical Activity</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-xs-12">
-            <div class="media featuresContent">
-              <span class="media-left bg-color-4">
-                <i class="fa fa-cutlery bg-color-4" aria-hidden="true"></i>
-              </span>
-              <div class="media-body">
-                <h3 class="media-heading color-4">Delicious Food</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-xs-12">
-            <div class="media featuresContent">
-              <span class="media-left bg-color-5">
-                <i class="fa fa-heart bg-color-5" aria-hidden="true"></i>
-              </span>
-              <div class="media-body">
-                <h3 class="media-heading color-5">Love &amp; Care</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-xs-12">
-            <div class="media featuresContent">
-              <span class="media-left bg-color-6">
-                <i class="fa fa-shield bg-color-6" aria-hidden="true"></i>
-              </span>
-              <div class="media-body">
-                <h3 class="media-heading color-6">Meny Sports</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </section>

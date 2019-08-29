@@ -51,7 +51,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><img src="on it logo draft 1.png" alt="ON IT!" /></a>
+            <a class="navbar-brand" href="index.html"><img src="./assets/ON IT logo.png" alt="ON IT!" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
