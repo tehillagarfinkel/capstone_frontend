@@ -1,5 +1,65 @@
 <template>
   <div class="home">
+    <section class="py-9 pb-8 bg-parallax" style="background-image: url(img/event/1.jpg);">
+      <div class="container">
+        <div
+          class="sectionTitleSmall text-center mb-7 wow fadeInUp"
+          style="visibility: visible; animation-name: fadeInUp;"
+        >
+          <h2 class="font-weight-bold text-white">My Task Stats</h2>
+          <p class="text-white font-size-15">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
+          </p>
+        </div>
+
+        <div class="row wow fadeInUp" id="counter" style="visibility: visible; animation-name: fadeInUp;">
+          <div class="col-sm-3 col-xs-12">
+            <div class="text-center text-white mb-5">
+              <div class="counter-value" data-count="179">179</div>
+              <span
+                class="d-inline-block bg-warning text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
+              >
+                Events Held
+              </span>
+            </div>
+          </div>
+
+          <div class="col-sm-3 col-xs-12">
+            <div class="text-center text-white mb-5">
+              <div class="counter-value" data-count="548">548</div>
+              <span
+                class="d-inline-block bg-success text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
+              >
+                happy funs
+              </span>
+            </div>
+          </div>
+
+          <div class="col-sm-3 col-xs-12">
+            <div class="text-center text-white mb-5">
+              <div class="counter-value" data-count="305">305</div>
+              <span
+                class="d-inline-block bg-danger text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
+              >
+                happy Clients
+              </span>
+            </div>
+          </div>
+
+          <div class="col-sm-3 col-xs-12">
+            <div class="text-center text-white mb-5">
+              <div class="counter-value" data-count="1000">1000</div>
+              <span
+                class="d-inline-block bg-info text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
+              >
+                hours support
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="mainContent full-width clearfix featureSection">
       <div class="container">
         <div class="sectionTitle text-center">
@@ -52,9 +112,54 @@
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.bg-parallax {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.bg-repeat {
+  background-repeat: repeat;
+}
+
+#counter .counter-value {
+  width: 145px;
+  height: 145px;
+  line-height: 145px;
+  border-radius: 100%;
+  border: 4px solid #fff;
+  display: block;
+  margin: 0 auto 22px;
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  #counter .counter-value {
+    font-size: 3.25rem;
+  }
+}
+
+#counter span {
+  font-size: 0.8125rem;
+}
+
+@media (min-width: 768px) {
+  #counter span {
+    font-size: 0.9375rem;
+  }
+}
+.text-center {
+  text-align: center !important;
+}
+
+.d-md-inline-block {
+  display: inline-block !important;
+}
+</style>
 
 <script>
+/* global $ */
 import axios from "axios";
 
 export default {
@@ -70,6 +175,14 @@ export default {
     axios.get("/api/categories").then(response => {
       console.log(response.data);
       this.categories = response.data;
+    });
+  },
+  mounted: function() {
+    console.log("mounted");
+    console.log(jQuery);
+    $(".counter").counterUp({
+      delay: 10,
+      time: 2000
     });
   },
   methods: {

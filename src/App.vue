@@ -299,7 +299,12 @@
   </div>
 </template>
 
-<style></style>
+<style>
+#navbar-brand {
+  width: 10px;
+  height: 100%;
+}
+</style>
 
 <script>
 import axios from "axios";
