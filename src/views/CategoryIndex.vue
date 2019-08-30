@@ -6,7 +6,7 @@
           class="sectionTitleSmall text-center mb-7 wow fadeInUp"
           style="visibility: visible; animation-name: fadeInUp;"
         >
-          <h2 class="font-weight-bold text-white">My Task Stats</h2>
+          <h2 class="font-weight-bold text-white">My ON IT Stats</h2>
           <p class="text-white font-size-15">
             Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
           </p>
@@ -19,7 +19,7 @@
               <span
                 class="d-inline-block bg-warning text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
               >
-                Events Held
+                Categories
               </span>
             </div>
           </div>
@@ -30,7 +30,7 @@
               <span
                 class="d-inline-block bg-success text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
               >
-                happy funs
+                Tasks
               </span>
             </div>
           </div>
@@ -41,7 +41,7 @@
               <span
                 class="d-inline-block bg-danger text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
               >
-                happy Clients
+                Tasks Completed
               </span>
             </div>
           </div>
@@ -52,7 +52,7 @@
               <span
                 class="d-inline-block bg-info text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
               >
-                hours support
+                Tasks to do
               </span>
             </div>
           </div>
@@ -178,8 +178,6 @@ export default {
     });
   },
   mounted: function() {
-    console.log("mounted");
-    console.log(jQuery);
     $(".counter").counterUp({
       delay: 10,
       time: 2000

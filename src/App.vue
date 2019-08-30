@@ -300,9 +300,14 @@
 </template>
 
 <style>
-#navbar-brand {
+/*#navbar-brand {
   width: 10px;
   height: 100%;
+}*/
+
+img {
+  width: 100%;
+  height: auto;
 }
 </style>
 

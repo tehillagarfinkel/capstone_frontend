@@ -9,6 +9,38 @@
       v-on:eventDrop="dropEvent"
       v-on:eventClick="eventClick"
     />
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ currentCalendarEvent.title }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>Due: {{ currentCalendarEvent.dueDate }}</div>
+            <div>Start Time: {{ currentCalendarEvent.start }}</div>
+            <div>Completed: {{ currentCalendarEvent.completed }}</div>
+            <div>
+              I'm done:
+              <input v-on:click="markComplete(currentCalendarEvent)" type="checkbox" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,7 +70,8 @@ export default {
       events: [{}],
       colors: ["#f0c24b", "#b5d56a", "#ea7066", "#84bed6", "#a597e7", "#ea77ad"],
       categoryColors: {},
-      colorIndex: 0
+      colorIndex: 0,
+      currentCalendarEvent: {}
     };
   },
   created: function() {
@@ -74,11 +107,13 @@ export default {
         }
 
         return {
-          title: `${task.description} - due ${task.due_date}`,
+          title: task.description,
           start: task.start || this.events[0].end,
           id: task.id,
           backgroundColor: backgroundColor,
-          category_id: 1
+          category_id: 1,
+          completed: task.completed,
+          dueDate: task.due_date
         };
       });
       this.events.forEach(event => {
@@ -101,23 +136,45 @@ export default {
         start: data.event.start
       };
       axios.patch("/api/tasks/" + data.event.id, params).then(response => {
-        // console.log(response.data);
         var task = response.data;
         data.event.setProp("backgroundColor", this.categoryColors[task.category_id]);
       });
     },
     eventClick: function(data) {
-      console.log("Event: " + data.event.title);
-      // alert("Coordinates: " + data.jsEvent.pageX + "," + data.jsEvent.pageY);
-      // alert("View: " + data.view.type);
+      this.currentCalendarEvent = {
+        title: data.event.title,
+        start: data.event.start,
+        completed: data.event.extendedProps.completed,
+        dueDate: data.event.extendedProps.dueDate,
+        taskId: data.event.id
+      };
+      $("#exampleModal").modal();
+      console.log(data.event);
+      console.log("due date is", data.event.extendedProps.dueDate);
     },
-    getRandomColor: function() {
-      var letters = "0123456789ABCDEF";
-      var color = "#";
-      for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+    markComplete: function(currentCalendarEvent) {
+      if (this.currentCalendarEvent.completed === "true") {
+        this.currentCalendarEvent.completed = "false";
+      } else {
+        this.currentCalendarEvent.completed = "true";
       }
-      return color;
+      console.log("currentCalendarEvent:", currentCalendarEvent);
+      console.log("taskId", currentCalendarEvent.taskId);
+      console.log("completed", currentCalendarEvent.completed);
+
+      var params = {
+        completed: this.currentCalendarEvent.completed
+      };
+      Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
+      axios
+        .patch("/api/tasks/" + currentCalendarEvent.taskId, params)
+        .then(response => {
+          console.log(response.data);
+          this.currentCalendarEvent = response.data;
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
     }
   }
 };

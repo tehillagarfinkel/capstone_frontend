@@ -29,7 +29,7 @@
                     Due: {{ task.due_date }}
                   </li>
                   <li>
-                    <i class="fa fa-paint-brush color-1" aria-hidden="true"></i>
+                    <i class="fa fa-hourglass-start color-1" aria-hidden="true"></i>
                     Start time: {{ task.start }}
                   </li>
                   <li>
@@ -189,6 +189,14 @@ export default {
       console.log(response.data);
       this.category = response.data;
       this.tasks = response.data.tasks;
+
+      var categories = response.data;
+      categories.forEach(category => {
+        category.tasks.forEach(task => {
+          // add if condition if task.completed = false, then... (use select?)
+          this.tasks.push(task);
+        });
+      });
     });
   },
   methods: {

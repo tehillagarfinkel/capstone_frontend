@@ -143,7 +143,7 @@
                           <a class="dropdown-item" href="#">Separated link</a>
                         </div>
                       </div>
-                    <!--   <input type="text" class="form-control" aria-label="Text input with dropdown button" />
+                     <input type="text" class="form-control" aria-label="Text input with dropdown button" />
                     </div>
                   </li>
 
