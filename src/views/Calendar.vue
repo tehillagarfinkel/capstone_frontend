@@ -20,23 +20,30 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{ currentCalendarEvent.title }}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">{{ currentTask.description }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <div>Due: {{ currentCalendarEvent.dueDate }}</div>
-            <div>Start Time: {{ currentCalendarEvent.start }}</div>
-            <div>Completed: {{ currentCalendarEvent.completed }}</div>
+            <div>Due: {{ currentTask.dueDate }}</div>
+            <div>Start Time: {{ currentTask.start }}</div>
+            <div>Completed: {{ currentTask.completed }}</div>
             <div>
               I'm done:
-              <input v-on:click="markComplete(currentCalendarEvent)" type="checkbox" />
+              <input v-on:click="markComplete(currentTask)" type="checkbox" />
             </div>
           </div>
           <div class="modal-footer">
-            <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-primary bg-color-1"
+              data-dismiss="modal"
+              v-on:click="markComplete(currentTask)"
+            >
+              {{ currentTask.description }} is done!
+            </button>
+            <button type="button" class="btn btn-primary bg-color-3" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -50,7 +57,15 @@
 @import "~@fullcalendar/timegrid/main.css";
 </style>
 
+<style>
+.completed {
+  opacity: 0.5;
+}
+</style>
+
 <script>
+/* global $ */
+
 import axios from "axios";
 import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -71,7 +86,8 @@ export default {
       colors: ["#f0c24b", "#b5d56a", "#ea7066", "#84bed6", "#a597e7", "#ea77ad"],
       categoryColors: {},
       colorIndex: 0,
-      currentCalendarEvent: {}
+      currentTask: {},
+      currentDataEvent: null
     };
   },
   created: function() {
@@ -93,6 +109,7 @@ export default {
           });
         });
         console.log("categoryColors", this.categoryColors);
+        console.log("tasks", this.tasks);
       });
     });
   },
@@ -113,7 +130,8 @@ export default {
           backgroundColor: backgroundColor,
           category_id: 1,
           completed: task.completed,
-          dueDate: task.due_date
+          dueDate: task.due_date,
+          className: task.completed ? "completed" : ""
         };
       });
       this.events.forEach(event => {
@@ -141,36 +159,44 @@ export default {
       });
     },
     eventClick: function(data) {
-      this.currentCalendarEvent = {
-        title: data.event.title,
-        start: data.event.start,
-        completed: data.event.extendedProps.completed,
-        dueDate: data.event.extendedProps.dueDate,
-        taskId: data.event.id
-      };
-      $("#exampleModal").modal();
-      console.log(data.event);
-      console.log("due date is", data.event.extendedProps.dueDate);
-    },
-    markComplete: function(currentCalendarEvent) {
-      if (this.currentCalendarEvent.completed === "true") {
-        this.currentCalendarEvent.completed = "false";
+      // this.currentTask = {
+      //   title: data.event.title,
+      //   start: data.event.start,
+      //   completed: data.event.extendedProps.completed,
+      //   dueDate: data.event.extendedProps.dueDate,
+      //   taskId: data.event.id
+      // };
+      this.currentTask = this.tasks.find(task => task.id === parseInt(data.event.id));
+      if (this.currentTask) {
+        console.log(this.currentTask);
+        this.currentDataEvent = data.event;
+        $("#exampleModal").modal();
       } else {
-        this.currentCalendarEvent.completed = "true";
+        this.currentTask = {};
       }
-      console.log("currentCalendarEvent:", currentCalendarEvent);
-      console.log("taskId", currentCalendarEvent.taskId);
-      console.log("completed", currentCalendarEvent.completed);
+    },
+    markComplete: function(currentTask) {
+      if (this.currentTask.completed === true) {
+        this.currentTask.completed = false;
+      } else {
+        this.currentTask.completed = true;
+      }
+      if (this.currentDataEvent) {
+        this.currentDataEvent.setProp("className", this.currentTask.completed ? "completed" : "");
+      }
+      console.log("currentTask:", currentTask);
+      console.log("taskId", currentTask.id);
+      console.log("completed", currentTask.completed);
 
       var params = {
-        completed: this.currentCalendarEvent.completed
+        completed: this.currentTask.completed
       };
       Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
       axios
-        .patch("/api/tasks/" + currentCalendarEvent.taskId, params)
+        .patch("/api/tasks/" + currentTask.id, params)
         .then(response => {
           console.log(response.data);
-          this.currentCalendarEvent = response.data;
+          // this.currentTask = response.data;
         })
         .catch(error => {
           this.errors = error.response.data.errors;
