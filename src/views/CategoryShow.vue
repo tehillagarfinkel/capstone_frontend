@@ -11,8 +11,8 @@
         </div>
 
         <div class="row">
-          <div v-for="task in tasks" class="col-lg-3 col-sm-6 col-xs-12">
-            <div class="pricingTable">
+          <div v-for="task in orderBy(tasks, 'completed')" class="col-lg-3 col-sm-6 col-xs-12">
+            <div class="pricingTable" v-bind:class="{ completed: task.completed }">
               <div class="priceUper">
                 <div class="priceTitle bg-color-1">
                   <h3>{{ task.description }}</h3>
@@ -26,11 +26,11 @@
                   </li>
                   <li>
                     <i class="fa  fa-calendar color-1" aria-hidden="true"></i>
-                    Due: {{ task.due_date }}
+                    Due: {{ task.formatted.due_date }}
                   </li>
                   <li>
                     <i class="fa fa-hourglass-start color-1" aria-hidden="true"></i>
-                    Start time: {{ task.start }}
+                    Start time: {{ task.formatted.start }}
                   </li>
                   <li>
                     <i class="fa  fa-check-square-o color-1" aria-hidden="true"></i>
@@ -165,13 +165,19 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.completed {
+  opacity: 0.5;
+}
+</style>
 
 <script>
 import axios from "axios";
 import { Datetime } from "vue-datetime";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       category: [],
@@ -193,7 +199,6 @@ export default {
       var categories = response.data;
       categories.forEach(category => {
         category.tasks.forEach(task => {
-          // add if condition if task.completed = false, then... (use select?)
           this.tasks.push(task);
         });
       });

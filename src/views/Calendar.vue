@@ -29,10 +29,10 @@
             <div>Due: {{ currentTask.dueDate }}</div>
             <div>Start Time: {{ currentTask.start }}</div>
             <div>Completed: {{ currentTask.completed }}</div>
-            <div>
+            <!-- <div>
               I'm done:
               <input v-on:click="markComplete(currentTask)" type="checkbox" />
-            </div>
+            </div> -->
           </div>
           <div class="modal-footer">
             <button
