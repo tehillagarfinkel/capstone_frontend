@@ -1,15 +1,13 @@
 <template>
   <div class="home">
-    <section class="py-9 pb-8 bg-parallax" style="background-image: url(img/event/1.jpg);">
+    <section class="py-9 pb-8 bg-parallax" style="background-image: url(/img/event/1.jpg);">
+      <!-- <section class="py-9 pb-8 bg-parallax" style="background: black"> -->
       <div class="container">
         <div
           class="sectionTitleSmall text-center mb-7 wow fadeInUp"
           style="visibility: visible; animation-name: fadeInUp;"
         >
           <h2 class="font-weight-bold text-white">My ON IT Stats</h2>
-          <p class="text-white font-size-15">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
-          </p>
         </div>
 
         <div class="row wow fadeInUp" id="counter" style="visibility: visible; animation-name: fadeInUp;">
@@ -117,6 +115,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  background-color: "#404040";
 }
 
 .bg-repeat {

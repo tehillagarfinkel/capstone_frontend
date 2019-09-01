@@ -121,22 +121,22 @@
               <div class="priceLower">
                 <ul class="list-unstyled priceOffer">
                   <li>
-                    <i class="fa fa-taxi color-2" aria-hidden="true"></i>
+                    <i class="fa fa-pencil-square-o color-2" aria-hidden="true"></i>
                     Description:
                     <input v-model="taskDescription" type="text" />
                   </li>
                   <li>
-                    <i class="fa fa-birthday-cake color-2" aria-hidden="true"></i>
-                    Duration (min):
+                    <i class="fa fa-clock-o color-2" aria-hidden="true"></i>
+                    Duration:
                     <input type="number" v-model="taskDuration" />
                   </li>
                   <li>
-                    <i class="fa fa-medkit color-2" aria-hidden="true"></i>
+                    <i class="fa fa-calendar color-2" aria-hidden="true"></i>
                     Due Date:
                     <datetime v-model="taskDueDate"></datetime>
                   </li>
                   <li>
-                    <i class="fa fa-paint-brush color-2" aria-hidden="true"></i>
+                    <i class="fa fa-hourglass-start color-2" aria-hidden="true"></i>
                     Start time:
                     <input v-model="taskStartTime" type="text" />
                   </li>

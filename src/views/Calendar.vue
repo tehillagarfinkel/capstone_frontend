@@ -26,8 +26,8 @@
             </button>
           </div>
           <div class="modal-body">
-            <div>Due: {{ currentTask.dueDate }}</div>
-            <div>Start Time: {{ currentTask.start }}</div>
+            <div>Due: {{ currentTask.formatted.due_date }}</div>
+            <div>Start Time: {{ currentTask.formatted.start }}</div>
             <div>Completed: {{ currentTask.completed }}</div>
             <!-- <div>
               I'm done:
@@ -86,8 +86,9 @@ export default {
       colors: ["#f0c24b", "#b5d56a", "#ea7066", "#84bed6", "#a597e7", "#ea77ad"],
       categoryColors: {},
       colorIndex: 0,
-      currentTask: {},
-      currentDataEvent: null
+      currentTask: { formatted: {} },
+      currentDataEvent: null,
+      nextValidStartTime: new Date()
     };
   },
   created: function() {
@@ -123,9 +124,11 @@ export default {
           backgroundColor = this.categoryColors[task.category_id];
         }
 
+        var startEnd = this.getValidStartEnd(task);
         return {
           title: task.description,
-          start: task.start || this.events[0].end,
+          start: startEnd[0],
+          end: startEnd[1],
           id: task.id,
           backgroundColor: backgroundColor,
           category_id: 1,
@@ -159,13 +162,6 @@ export default {
       });
     },
     eventClick: function(data) {
-      // this.currentTask = {
-      //   title: data.event.title,
-      //   start: data.event.start,
-      //   completed: data.event.extendedProps.completed,
-      //   dueDate: data.event.extendedProps.dueDate,
-      //   taskId: data.event.id
-      // };
       this.currentTask = this.tasks.find(task => task.id === parseInt(data.event.id));
       if (this.currentTask) {
         console.log(this.currentTask);
@@ -174,6 +170,7 @@ export default {
       } else {
         this.currentTask = {};
       }
+      console.log("current task is", this.currentTask);
     },
     markComplete: function(currentTask) {
       if (this.currentTask.completed === true) {
@@ -191,16 +188,28 @@ export default {
       var params = {
         completed: this.currentTask.completed
       };
-      Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
+      // Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
+      console.log("START PATCH /api/tasks", params);
       axios
         .patch("/api/tasks/" + currentTask.id, params)
         .then(response => {
-          console.log(response.data);
-          // this.currentTask = response.data;
+          console.log("FINISH PATCH /api/tasks", response.data);
+          this.currentTask = response.data;
         })
         .catch(error => {
           this.errors = error.response.data.errors;
         });
+    },
+    getValidStartEnd: function(task) {
+      console.log(task.start);
+      var start = task.start || this.events[0].end;
+      var end = new Date(new Date(start).getTime() + task.duration * 60000);
+      return [start, end];
+      // var start = this.nextValidStartTime;
+      // this.nextValidStartTime = moment(start)
+      //   .add(task.duration, "m")
+      //   .toDate();
+      // return start;
     }
   }
 };

@@ -149,92 +149,6 @@
               </li>
             </ul>
           </div>
-
-          <div class="cart-dropdown">
-            <a href="#" class="bg-color-6 shop-cart">
-              <i class="fa fa-shopping-basket " aria-hidden="true"></i>
-              <span class="badge bg-color-1">3</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li>
-                <i class="fa fa-shopping-basket " aria-hidden="true"></i>
-                3 items in your cart
-              </li>
-              <li>
-                <a href="single-product.html">
-                  <div class="media">
-                    <div class="media-left">
-                      <img src="img/home/cart/cart-img.png" alt="cart-Image" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Barbie Racing Car</h4>
-                      <div class="price">
-                        <span class="color-1">$50</span>
-                      </div>
-                      <span class="amount">Qnt: 1</span>
-                    </div>
-                  </div>
-                </a>
-                <span class="cancel"><i class="fa fa-close" aria-hidden="true"></i></span>
-              </li>
-              <li>
-                <a href="single-product.html">
-                  <div class="media">
-                    <div class="media-left">
-                      <img src="img/home/cart/cart-img.png" alt="cart-Image" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Barbie Racing Car</h4>
-                      <div class="price">
-                        <span class="color-1">$50</span>
-                      </div>
-                      <span class="amount">Qnt: 1</span>
-                    </div>
-                  </div>
-                </a>
-                <span class="cancel"><i class="fa fa-close" aria-hidden="true"></i></span>
-              </li>
-              <li>
-                <a href="single-product.html">
-                  <div class="media">
-                    <div class="media-left">
-                      <img src="img/home/cart/cart-img.png" alt="cart-Image" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Barbie Racing Car</h4>
-                      <div class="price">
-                        <span class="color-1">$50</span>
-                      </div>
-                      <span class="amount">Qnt: 1</span>
-                    </div>
-                  </div>
-                </a>
-                <span class="cancel"><i class="fa fa-close" aria-hidden="true"></i></span>
-              </li>
-              <li>
-                <span class="cart-total">Subtotal</span>
-                <span class="cart-price">$150</span>
-                <div class="cart-button">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='checkout-step-1.html';"
-                    data-cf-modified-ba74d78c1d7257bacd4f66ec-=""
-                  >
-                    Checkout
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='cart-page.html';"
-                    data-cf-modified-ba74d78c1d7257bacd4f66ec-=""
-                  >
-                    View Cart
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
       </nav>
     </header>
@@ -267,9 +181,11 @@
             <div class="col-sm-5 col-sm-push-7 col-xs-12">
               <ul class="list-inline">
                 <li>
-                  <a href="#" class="bg-color-1"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="#" class="bg-color-2">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  </a>
                 </li>
-                <li>
+                <!-- <li>
                   <a href="#" class="bg-color-2"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                 </li>
                 <li>
@@ -280,17 +196,11 @@
                 </li>
                 <li>
                   <a href="#" class="bg-color-5"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
-                </li>
+                </li> -->
               </ul>
             </div>
             <div class="col-sm-7 col-sm-pull-5 col-xs-12">
-              <div class="copyRightText">
-                <p>
-                  © 2016 Copyright Kidz School Bootstrap Template by
-                  <a href="http://www.iamabdus.com/">Abdus</a>
-                  .
-                </p>
-              </div>
+              <div class="copyRightText"></div>
             </div>
           </div>
         </div>
@@ -305,8 +215,9 @@
   height: 100%;
 }*/
 
-img {
+.img {
   width: 100%;
+  height: 500%;
   height: auto;
 }
 </style>
