@@ -70,22 +70,53 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <div>
+                        <div class="form-group">
+                          <i class="fa fa-pencil-square-o"></i>
                           Description:
-                          <input v-model="task.description" type="text" />
+                          <input
+                            type="text"
+                            v-model="task.description"
+                            class="form-control border-color-1"
+                            placeholder="Description"
+                          />
                         </div>
-                        <div>
+
+                        <div class="form-group">
+                          <i class="fa fa-clock-o"></i>
                           Duration:
-                          <input type="number" v-model="task.duration" />
+                          <input
+                            type="text"
+                            v-model="task.duration"
+                            class="form-control border-color-1"
+                            placeholder="Duration"
+                          />
                         </div>
-                        <div>
+
+                        <div class="form-group">
+                          <i class="fa fa-hourglass-start"></i>
                           Start Time:
-                          <input v-model="task.start" type="text" />
+                          <input
+                            type="text"
+                            v-model="task.start"
+                            class="form-control border-color-1"
+                            placeholder="Start Time"
+                          />
                         </div>
-                        <div>
+
+                        <div class="form-group">
+                          <i class="fa fa-calendar"></i>
+                          Due Date:
+                          <datetime
+                            v-model="task.due_date"
+                            class="form-control border-color-1"
+                            placeholder="Due Date"
+                          />
+                        </div>
+
+                        <!--  <div>
                           Due Date:
                           <datetime v-model="task.due_date"></datetime>
-                        </div>
+                        </div> -->
                       </div>
                       <div class="modal-footer">
                         <button

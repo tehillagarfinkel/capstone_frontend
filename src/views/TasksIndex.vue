@@ -118,71 +118,12 @@
               </div>
             </div>
           </div>
-          <!-- <div class="col-lg-3 col-sm-6 col-xs-12">
-            <div class="pricingTable">
-              <div class="priceUper">
-                <div class="priceTitle bg-color-2">
-                  <h3>New Task</h3>
-                </div>
-              </div>
-              <div class="priceLower">
-                <ul class="list-unstyled priceOffer">
-                  <li>
-                    <i class="fa fa-taxi color-2" aria-hidden="true"></i>
-                    Category:
-                    <input v-model="taskCategory" type="text" />
-                      <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <button
-                          class="btn btn-outline-secondary dropdown-toggle"
-                          type="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          Dropdown
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                          <div role="separator" class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                      </div>
-                     <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                    </div>
-                  </li>
+        </div>
 
-                  <li>
-                    <i class="fa fa-taxi color-2" aria-hidden="true"></i>
-                    Description:
-                    <input v-model="taskDescription" type="text" />
-                  </li>
-                  <li>
-                    <i class="fa fa-birthday-cake color-2" aria-hidden="true"></i>
-                    Duration (min):
-                    <input type="number" v-model="taskDuration" />
-                  </li>
-                  <li>
-                    <i class="fa fa-medkit color-2" aria-hidden="true"></i>
-                    Due Date:
-                    <datetime v-model="taskDueDate"></datetime>
-                  </li>
-                  <li>
-                    <i class="fa fa-paint-brush color-2" aria-hidden="true"></i>
-                    Start time:
-                    <input v-model="taskStartTime" type="text" />
-                  </li>
-                </ul>
-                <div class="priceBtn">
-                  <div v-on:click="createTask" class="btn btn-primary bg-color-2">
-                    Create Task
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
+        <div>
+          <button type="button" class="btn btn-primary" @click="$router.push('/category')">
+            Back to my Categories
+          </button>
         </div>
       </div>
     </section>
