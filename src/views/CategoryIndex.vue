@@ -17,7 +17,7 @@
 
         <div class="row wow fadeInUp" id="counter" style="visibility: visible; animation-name: fadeInUp;">
           <div class="col-sm-3 col-xs-12">
-            <div class="text-center text-black mb-5">
+            <div class="text-center text-white mb-5">
               <div id="count-categories" class="counter-value"></div>
               <button type="button" class="btn btn-primary bg-color-2">Categories</button>
             </div>
@@ -121,6 +121,12 @@
 </template>
 
 <style scoped>
+#count-tasks-todo,
+#count-events,
+#count-tasks,
+#count-categories {
+  color: white;
+}
 .bg-parallax {
   background-size: cover;
   background-position: center;
@@ -188,17 +194,20 @@ export default {
       this.categories = response.data;
 
       const options = {
-        duration: 10
+        duration: 15
       };
 
-      const countUpCategories = new CountUp("count-categories", 250);
+      const countUpCategories = new CountUp("count-categories", 6);
       countUpCategories.start();
-      const countUpTasks = new CountUp("count-tasks", 10);
+
+      const countUpTasks = new CountUp("count-tasks", 34);
       countUpTasks.start();
-      const countUpEvents = new CountUp("count-events", 666);
-      countUpTasks.start();
-      const countUpTasksToDo = new CountUp("count-tasks-todo", 555);
-      countUpTasks.start();
+
+      const countUpEvents = new CountUp("count-events", 67);
+      countUpEvents.start();
+
+      const countUpTasksToDo = new CountUp("count-tasks-todo", 12);
+      countUpTasksToDo.start();
     });
   },
   methods: {
