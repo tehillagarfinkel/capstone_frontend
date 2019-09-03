@@ -7,51 +7,44 @@
           class="sectionTitleSmall text-center mb-7 wow fadeInUp"
           style="visibility: visible; animation-name: fadeInUp;"
         >
-          <h2 class="font-weight-bold text-white">My ON IT Stats</h2>
+          <!-- <h2 class="font-weight-bold text-white">My ON IT Stats</h2> -->
+          <h2>
+            <span class="shape shape-left bg-color-4"></span>
+            <span>My ON IT Stats</span>
+            <span class="shape shape-right bg-color-4"></span>
+          </h2>
         </div>
 
         <div class="row wow fadeInUp" id="counter" style="visibility: visible; animation-name: fadeInUp;">
           <div class="col-sm-3 col-xs-12">
-            <div class="text-center text-white mb-5">
-              <div class="counter-value" data-count="179">179</div>
-              <span
-                class="d-inline-block bg-warning text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
-              >
-                Categories
-              </span>
+            <div class="text-center text-black mb-5">
+              <div id="count-categories" class="counter-value"></div>
+              <button type="button" class="btn btn-primary bg-color-2">Categories</button>
             </div>
           </div>
 
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
-              <div class="counter-value" data-count="548">548</div>
-              <span
-                class="d-inline-block bg-success text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
-              >
-                Tasks
-              </span>
+              <div id="count-tasks" class="counter-value"></div>
+              <button type="button" class="btn btn-primary bg-color-1" @click="$router.push('/tasks')">Tasks</button>
             </div>
           </div>
 
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
-              <div class="counter-value" data-count="305">305</div>
-              <span
-                class="d-inline-block bg-danger text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
-              >
-                Tasks Completed
-              </span>
+              <div id="count-events" class="counter-value"></div>
+              <button type="button" class="btn btn-primary bg-color-4" @click="$router.push('/calendar')">
+                Events
+              </button>
             </div>
           </div>
 
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
-              <div class="counter-value" data-count="1000">1000</div>
-              <span
-                class="d-inline-block bg-info text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3"
-              >
-                Tasks to do
-              </span>
+              <div id="count-tasks-todo" class="counter-value"></div>
+              <button type="button" class="btn btn-primary bg-color-3" @click="$router.push('/calendar')">
+                Tasks To Do
+              </button>
             </div>
           </div>
         </div>
@@ -85,20 +78,37 @@
           </div>
           <div class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
-              <span class="media-left bg-color-5">
+              <span class="media-left bg-color-6">
                 <i class="fa fa-plus" aria-hidden="true"></i>
               </span>
               <div class="media-body">
-                <h3 class="media-heading color-5">New Category</h3>
-                <div>
-                  Name:
-                  <input v-model="categoryName" type="text" />
+                <h3 class="media-heading color-6">New Category</h3>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    v-model="categoryName"
+                    class="form-control border-color-6"
+                    id="exampleInputEmail1"
+                    placeholder="Name"
+                  />
                 </div>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    v-model="categoryImage"
+                    class="form-control border-color-6"
+                    id="exampleInputEmail1"
+                    placeholder="Image"
+                  />
+                </div>
+
                 <div>
-                  Image:
-                  <input v-model="categoryImage" type="text" />
                   <div>
-                    <button v-on:click="createCategory" type="button" class="btn btn-success btn-sm">Add</button>
+                    <button v-on:click="createCategory" type="button" class=" btn btn-primary btn-sm bg-color-6">
+                      Add
+                    </button>
                   </div>
                 </div>
               </div>
@@ -160,6 +170,7 @@
 <script>
 /* global $ */
 import axios from "axios";
+import { CountUp } from "countup.js";
 
 export default {
   data: function() {
@@ -170,16 +181,24 @@ export default {
       categoryImage: ""
     };
   },
-  created: function() {
+  created: function() {},
+  mounted: function() {
     axios.get("/api/categories").then(response => {
       console.log(response.data);
       this.categories = response.data;
-    });
-  },
-  mounted: function() {
-    $(".counter").counterUp({
-      delay: 10,
-      time: 2000
+
+      const options = {
+        duration: 10
+      };
+
+      const countUpCategories = new CountUp("count-categories", 250);
+      countUpCategories.start();
+      const countUpTasks = new CountUp("count-tasks", 10);
+      countUpTasks.start();
+      const countUpEvents = new CountUp("count-events", 666);
+      countUpTasks.start();
+      const countUpTasksToDo = new CountUp("count-tasks-todo", 555);
+      countUpTasks.start();
     });
   },
   methods: {

@@ -6,15 +6,29 @@
         <ul>
           <li class="text-danger" v-for="error in errors">{{ error }}</li>
         </ul>
+
         <div class="form-group">
-          <label>Email:</label>
-          <input type="email" class="form-control" v-model="email" />
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <input
+            type="email"
+            class="form-control border-color-2"
+            v-model="email"
+            id="exampleInputEmail2"
+            placeholder="Email"
+          />
         </div>
+
         <div class="form-group">
-          <label>Password:</label>
-          <input type="password" class="form-control" v-model="password" />
+          <i class="fa fa-lock"></i>
+          <input
+            type="password"
+            class="form-control border-color-1"
+            v-model="password"
+            id="exampleInputEmail1"
+            placeholder="Password"
+          />
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit" />
+        <input type="submit" class="btn btn-outline-primary" value="Login" />
       </form>
     </div>
   </div>

@@ -51,30 +51,17 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><img src="./assets/ON IT logo.png" alt="ON IT!" /></a>
+            <a class="navbar-brand" href="/category"><img src="./assets/ON IT logo.png" alt="ON IT!" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown singleDrop color-1   active ">
-                <a
-                  href="javascript:void(0)"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
+                <a href="/category" role="button" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-home bg-color-1" aria-hidden="true"></i>
                   <span class="active">Home</span>
                 </a>
-                <!-- <ul class="dropdown-menu dropdown-menu-left">
-                  <li class=" active "><a href="/">Kidz School</a></li>
-                  <li class=""><a href="index-v2.html">Kidz Store</a></li>
-                  <li class=""><a href="index-v3.html">Kidz Daycare</a></li>
-                  <li class=""><a href="index-v4.html">Kidz Fashion</a></li>
-                </ul> -->
               </li>
               <li class="dropdown singleDrop color-3 ">
                 <a
@@ -95,57 +82,19 @@
                   </li>
                 </ul>
               </li>
-              <li class="dropdown singleDrop color-3 ">
-                <a
-                  href="/"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="fa fa-list-ul bg-color-2" aria-hidden="true"></i>
+
+              <li class="dropdown singleDrop color-2 ">
+                <a href="/tasks" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-check-square-o bg-color-2" aria-hidden="true"></i>
                   <span>Tasks</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-left">
-                  <li class=" "><a href="/tasks">My Tasks</a></li>
-                </ul>
               </li>
 
               <li class="dropdown singleDrop color-4 ">
-                <a
-                  href="javascript:void(0)"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="fa fa-pencil-square-o bg-color-4" aria-hidden="true"></i>
+                <a href="/calendar" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-calendar bg-color-4" aria-hidden="true"></i>
                   <span>Calendar</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li
-                    class="dropdown dropdown-submenu  
-                     || 
-                     || 
-                     "
-                  ></li>
-                  <li class=""><a href="/calendar">My Calendar</a></li>
-                  <!--    <li class=""><a href="category.html">Product Categories</a></li>
-                  <li class=""><a href="cart-page.html">Cart</a></li>
-                  <li class="dropdown dropdown-submenu">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                      Checkout
-                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li class=" "><a href="checkout-step-1.html">Personal Info</a></li>
-                      <li class=" "><a href="checkout-step-2.html">Payment Info</a></li>
-                      <li class=" "><a href="checkout-step-3.html">Confirmation</a></li>
-                    </ul>
-                  </li> -->
-                </ul>
               </li>
             </ul>
           </div>
@@ -210,15 +159,10 @@
 </template>
 
 <style>
-/*#navbar-brand {
-  width: 10px;
-  height: 100%;
-}*/
-
-.img {
-  width: 100%;
-  height: 500%;
-  height: auto;
+img {
+  padding: 5px;
+  width: 20px;
+  height: 125px;
 }
 </style>
 

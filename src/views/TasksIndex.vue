@@ -8,9 +8,16 @@
             <span>All Tasks</span>
             <span class="shape shape-right bg-color-4"></span>
           </h2>
-          <div class="form-group">
-            <span>Search my tasks:</span>
-            <input v-model="searchFilter" type="text" />
+          <div class="input-group searchArea">
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input
+              type="text"
+              v-model="searchFilter"
+              class="form-control"
+              aria-label="Amount (to the nearest dollar)"
+              placeholder="Find a task..."
+            />
+            <button type="submit" class="input-group-addon button" id="basic-addon21">Search</button>
           </div>
         </div>
 
@@ -176,7 +183,6 @@
               </div>
             </div>
           </div> -->
-          -->
         </div>
       </div>
     </section>

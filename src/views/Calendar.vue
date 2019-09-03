@@ -28,6 +28,7 @@
           <div class="modal-body">
             <div>Due: {{ currentTask.formatted.due_date }}</div>
             <div>Start Time: {{ currentTask.formatted.start }}</div>
+            <div>Duration: {{ currentTask.duration }}</div>
             <div>Completed: {{ currentTask.completed }}</div>
             <!-- <div>
               I'm done:
@@ -201,15 +202,22 @@ export default {
         });
     },
     getValidStartEnd: function(task) {
-      console.log(task.start);
-      var start = task.start || this.events[0].end;
+      // console.log(task.start);
+      // var start = task.start || this.events[0].end;
+      // var end = new Date(new Date(start).getTime() + task.duration * 60000);
+      // return [start, end];
+      this.events.forEach(event => {
+        var eventStart = new Date(event.start);
+        var eventEnd = new Date(event.end);
+        console.log(eventStart, eventEnd, this.nextValidStartTime);
+        if (eventStart <= this.nextValidStartTime && eventEnd >= this.nextValidStartTime) {
+          this.nextValidStartTime = event.end;
+        }
+      });
+      var start = task.start || this.nextValidStartTime;
       var end = new Date(new Date(start).getTime() + task.duration * 60000);
+      this.nextValidStartTime = end;
       return [start, end];
-      // var start = this.nextValidStartTime;
-      // this.nextValidStartTime = moment(start)
-      //   .add(task.duration, "m")
-      //   .toDate();
-      // return start;
     }
   }
 };
