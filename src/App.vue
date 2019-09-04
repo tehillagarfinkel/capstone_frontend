@@ -127,12 +127,13 @@
       <div class="copyRight clearfix">
         <div class="container">
           <div class="row">
-            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+            <div class="">
               <ul class="list-inline">
                 <li>
-                  <a href="#" class="bg-color-2">
+                  <img id="footer-image" src="./assets/onitlogofooter.png" alt="ON IT!" />
+                  <!-- <a href="#" class="bg-color-2">
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                  </a>
+                  </a> -->
                 </li>
                 <!-- <li>
                   <a href="#" class="bg-color-2"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -159,17 +160,22 @@
 </template>
 
 <style>
-img {
-  padding: 5px;
-  width: 20px;
-  height: 125px;
-}
-
 .navbar-brand img {
   width: 325px !important;
   height: 100px;
   padding: 0 !important;
   margin: -28px;
+}
+
+.list-inline {
+  margin-right: 100px;
+}
+
+#footer-image {
+  margin: 0px !important;
+  padding: 0px !important;
+  width: 255px;
+  height: 75px;
 }
 </style>
 
