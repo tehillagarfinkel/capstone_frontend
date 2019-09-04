@@ -51,7 +51,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/category"><img src="./assets/ON IT logo.png" alt="ON IT!" /></a>
+            <a class="navbar-brand" href="/category"><img src="./assets/onitlogoheader.png" alt="ON IT!" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -163,6 +163,13 @@ img {
   padding: 5px;
   width: 20px;
   height: 125px;
+}
+
+.navbar-brand img {
+  width: 325px !important;
+  height: 100px;
+  padding: 0 !important;
+  margin: -28px;
 }
 </style>
 
