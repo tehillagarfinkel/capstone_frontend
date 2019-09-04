@@ -2,41 +2,47 @@
   <div class="home">
     <section
       class="py-9 pb-8 bg-parallax"
-      style="background-image: url('https://www.beesapps.com/wp-content/uploads/2016/04/sticky-notes-1.png');"
+      style="background-image: url('https://www.beesapps.com/wp-content/uploads/2016/04/sticky-notes-1.png')"
     >
-      <!-- <section class="py-9 pb-8 bg-parallax" style="background: black"> -->
       <div class="container">
         <div
           class="sectionTitleSmall text-center mb-7 wow fadeInUp"
           style="visibility: visible; animation-name: fadeInUp;"
         >
-          <!-- <h2 class="font-weight-bold text-white">My ON IT Stats</h2> -->
-          <h2>
+          <h2 class="dashboard-header">My ON IT Stats</h2>
+          <!--  <h2>
             <span class="shape shape-left bg-color-4"></span>
             <span>My ON IT Stats</span>
             <span class="shape shape-right bg-color-4"></span>
-          </h2>
+          </h2> -->
         </div>
 
         <div class="row wow fadeInUp" id="counter" style="visibility: visible; animation-name: fadeInUp;">
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
               <div id="count-categories" class="counter-value"></div>
-              <button type="button" class="btn btn-primary bg-color-2">Categories</button>
+              <button id="dashboard-button" type="button" class="btn btn-light color-5">Categories</button>
             </div>
           </div>
 
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
               <div id="count-tasks" class="counter-value"></div>
-              <button type="button" class="btn btn-primary bg-color-1" @click="$router.push('/tasks')">Tasks</button>
+              <button id="dashboard-button" type="button" class="btn btn-light color-6" @click="$router.push('/tasks')">
+                Tasks
+              </button>
             </div>
           </div>
 
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
               <div id="count-events" class="counter-value"></div>
-              <button type="button" class="btn btn-primary bg-color-4" @click="$router.push('/calendar')">
+              <button
+                id="dashboard-button"
+                type="button"
+                class="btn btn-light color-1"
+                @click="$router.push('/calendar')"
+              >
                 Events
               </button>
             </div>
@@ -45,7 +51,7 @@
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
               <div id="count-tasks-todo" class="counter-value"></div>
-              <button type="button" class="btn btn-primary bg-color-3" @click="$router.push('/tasks')">
+              <button id="dashboard-button" type="button" class="btn btn-light color-4" @click="$router.push('/tasks')">
                 Tasks To Do
               </button>
             </div>
@@ -73,7 +79,7 @@
               <div class="media-body">
                 <h3 :class="`media-heading color-${index + 1}`">{{ category.name }}</h3>
                 <div>
-                  <router-link v-bind:to="`/category/${category.id}`">View tasks</router-link>
+                  <router-link v-bind:to="`/category/${category.id}`" class="routerlink">View tasks</router-link>
                 </div>
                 <p></p>
               </div>
@@ -81,17 +87,17 @@
           </div>
           <div class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
-              <span class="media-left bg-color-6">
+              <span class="media-left bg-color-3">
                 <i class="fa fa-plus" aria-hidden="true"></i>
               </span>
               <div class="media-body">
-                <h3 class="media-heading color-6">New Category</h3>
+                <h3 class="media-heading color-3">New Category</h3>
 
                 <div class="form-group">
                   <input
                     type="text"
                     v-model="categoryName"
-                    class="form-control border-color-6"
+                    class="form-control border-color-3"
                     id="exampleInputEmail1"
                     placeholder="Name"
                   />
@@ -101,7 +107,7 @@
                   <input
                     type="text"
                     v-model="categoryImage"
-                    class="form-control border-color-6"
+                    class="form-control border-color-3"
                     id="exampleInputEmail1"
                     placeholder="Image"
                   />
@@ -109,7 +115,7 @@
 
                 <div>
                   <div>
-                    <button v-on:click="createCategory" type="button" class=" btn btn-primary btn-sm bg-color-6">
+                    <button v-on:click="createCategory" type="button" class=" btn btn-primary btn-sm bg-color-3">
                       Add
                     </button>
                   </div>
@@ -135,6 +141,8 @@
   background-position: center;
   background-attachment: fixed;
   background-color: "#404040";
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .bg-repeat {
@@ -142,11 +150,11 @@
 }
 
 #counter .counter-value {
-  width: 145px;
-  height: 145px;
-  line-height: 145px;
+  width: 175px;
+  height: 175px;
+  line-height: 175px;
   border-radius: 100%;
-  border: 4px solid #fff;
+  border: 6px solid #fff;
   display: block;
   margin: 0 auto 22px;
   font-size: 2rem;
@@ -154,7 +162,9 @@
 
 @media (min-width: 768px) {
   #counter .counter-value {
-    font-size: 3.25rem;
+    font-size: 7rem;
+    font-family: "Dosis", sans-serif;
+    font-weight: bold;
   }
 }
 
@@ -173,6 +183,19 @@
 
 .d-md-inline-block {
   display: inline-block !important;
+}
+
+.router-link {
+  color: black;
+}
+
+.dashboard-header {
+  font-size: 50px;
+}
+
+#dashboard-button {
+  font-family: "Dosis", sans-serif;
+  font-size: 25px;
 }
 </style>
 
