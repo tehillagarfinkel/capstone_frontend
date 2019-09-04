@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <section class="py-9 pb-8 bg-parallax" style="background-image: url(/img/event/1.jpg);">
+    <section
+      class="py-9 pb-8 bg-parallax"
+      style="background-image: url('https://www.beesapps.com/wp-content/uploads/2016/04/sticky-notes-1.png');"
+    >
       <!-- <section class="py-9 pb-8 bg-parallax" style="background: black"> -->
       <div class="container">
         <div
@@ -42,7 +45,7 @@
           <div class="col-sm-3 col-xs-12">
             <div class="text-center text-white mb-5">
               <div id="count-tasks-todo" class="counter-value"></div>
-              <button type="button" class="btn btn-primary bg-color-3" @click="$router.push('/calendar')">
+              <button type="button" class="btn btn-primary bg-color-3" @click="$router.push('/tasks')">
                 Tasks To Do
               </button>
             </div>
@@ -65,7 +68,7 @@
           <div v-for="(category, index) in categories" class="col-sm-4 col-xs-12">
             <div class="media featuresContent">
               <span :class="`media-left bg-color-${index + 1}`">
-                <i :class="`fa fa-graduation-cap bg-color-${index + 1}`" aria-hidden="true"></i>
+                <i :class="`fa fa-spinner bg-color-${index + 1}`" aria-hidden="true"></i>
               </span>
               <div class="media-body">
                 <h3 :class="`media-heading color-${index + 1}`">{{ category.name }}</h3>

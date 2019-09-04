@@ -37,7 +37,7 @@
                     Completed: {{ task.completed }}
                     <div>
                       Completed
-                      <input v-on:click="markComplete(task)" type="checkbox" />
+                      <input v-model="task.completed" v-on:change="markComplete(task)" type="checkbox" />
                     </div>
                   </li>
                   <li>
@@ -142,6 +142,8 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="pricingTable">
               <div class="priceUper">
@@ -221,18 +223,26 @@ export default {
       taskStartTime: ""
     };
   },
+  computed: {
+    incompleteTasks: function() {
+      return this.tasks.filter(task => !task.completed);
+    },
+    completeTasks: function() {
+      return this.tasks.filter(task => task.completed);
+    }
+  },
   created: function() {
     axios.get("/api/categories/" + this.$route.params.id).then(response => {
       console.log(response.data);
       this.category = response.data;
       this.tasks = response.data.tasks;
 
-      var categories = response.data;
-      categories.forEach(category => {
-        category.tasks.forEach(task => {
-          this.tasks.push(task);
-        });
-      });
+      // var categories = response.data;
+      // categories.forEach(category => {
+      //   category.tasks.forEach(task => {
+      //     this.tasks.push(task);
+      //   });
+      // });
     });
   },
   methods: {
@@ -301,22 +311,23 @@ export default {
       });
     },
     markComplete: function(task) {
-      if (task.completed === "true") {
-        task.completed = "false";
-      } else {
-        task.completed = "true";
-      }
-
+      // if (task.completed === "true") {
+      //   task.completed = "false";
+      // } else {
+      //   task.completed = "true";
+      // }
+      console.log("markComplete", task, task.completed, !task.completed);
       var params = {
         completed: task.completed
       };
-      Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
+      // Object.keys(params).forEach(key => params[key] === "" && delete params[key]);
       axios
         .patch("/api/tasks/" + task.id, params)
         .then(response => {
           console.log(response.data);
-          task = response.data;
-          task.completed = "";
+          // task = response.data;
+          // task.completed = response.data.completed;
+          // task.completed = "";
         })
         .catch(error => {
           this.errors = error.response.data.errors;
