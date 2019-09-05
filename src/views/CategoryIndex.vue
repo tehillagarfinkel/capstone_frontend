@@ -79,7 +79,9 @@
               <div class="media-body">
                 <h3 :class="`media-heading color-${index + 1}`">{{ category.name }}</h3>
                 <div>
-                  <router-link v-bind:to="`/category/${category.id}`" class="routerlink">View tasks</router-link>
+                  <router-link v-bind:to="`/category/${category.id}`" :class="`media-heading color-${index + 1}`">
+                    View tasks
+                  </router-link>
                 </div>
                 <p></p>
               </div>
@@ -183,10 +185,6 @@
 
 .d-md-inline-block {
   display: inline-block !important;
-}
-
-.router-link {
-  color: black;
 }
 
 .dashboard-header {
