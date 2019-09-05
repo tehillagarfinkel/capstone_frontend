@@ -112,11 +112,6 @@
                             placeholder="Due Date"
                           />
                         </div>
-
-                        <!--  <div>
-                          Due Date:
-                          <datetime v-model="task.due_date"></datetime>
-                        </div> -->
                       </div>
                       <div class="modal-footer">
                         <button
@@ -187,14 +182,6 @@
     </section>
 
     <div><a href="/category" class="btn btn-primary btn-lg" role="button">Back to my categories</a></div>
-    <div>
-      Name:
-      <input v-model="category.name" type="text" />
-      Image:
-      <input v-model="category.image" type="text" />
-      <button v-on:click="updateCategory(category)">Update Category</button>
-      <button v-on:click="destroyCategory(category)">Delete Category</button>
-    </div>
   </div>
 </template>
 
@@ -271,26 +258,6 @@ export default {
     destroyTask: function(task) {
       axios.delete("/api/tasks/" + task.id).then(response => {
         this.$router.push(`/category/${task.category_id}`);
-      });
-    },
-    updateCategory: function(category) {
-      var params = {
-        name: category.name,
-        image: category.image
-      };
-      axios
-        .patch("/api/categories/" + this.$route.params.id, params)
-        .then(response => {
-          console.log(response.data);
-          this.$router.push("/category");
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors;
-        });
-    },
-    destroyCategory: function(category) {
-      axios.delete("api/categories/" + this.$route.params.id).then(response => {
-        this.$router.push("/category");
       });
     },
     createTask: function() {
