@@ -206,6 +206,7 @@ export default {
       // var start = task.start || this.events[0].end;
       // var end = new Date(new Date(start).getTime() + task.duration * 60000);
       // return [start, end];
+      console.log("EVENTS!!!", this.events);
       this.events.forEach(event => {
         var eventStart = new Date(event.start);
         var eventEnd = new Date(event.end);
@@ -214,9 +215,15 @@ export default {
           this.nextValidStartTime = event.end;
         }
       });
-      var start = task.start || this.nextValidStartTime;
-      var end = new Date(new Date(start).getTime() + task.duration * 60000);
-      this.nextValidStartTime = end;
+      var start, end;
+      if (task.start) {
+        start = task.start;
+        end = new Date(new Date(start).getTime() + task.duration * 60000);
+      } else {
+        start = this.nextValidStartTime;
+        end = new Date(new Date(start).getTime() + task.duration * 60000);
+        this.nextValidStartTime = end;
+      }
       return [start, end];
     }
   }
